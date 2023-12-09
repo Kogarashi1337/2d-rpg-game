@@ -53,6 +53,7 @@ public class KeyHandler implements KeyListener{
             }else{
                 timePressed=true;
             }
+
         }
 
         if(code==KeyEvent.VK_E){
@@ -119,10 +120,11 @@ public class KeyHandler implements KeyListener{
          // pauseGame=true;
             if(gp.gameState == gp.playState){
                 gp.gameState = gp.pauseState;
-                
+                gp.ui.pauseMessage("Game Paused");
             }
             else if(gp.gameState == gp.pauseState){
                 gp.gameState = gp.playState;
+                gp.ui.pMessageOn=false;
             }
         }
         if(code==KeyEvent.VK_RIGHT){

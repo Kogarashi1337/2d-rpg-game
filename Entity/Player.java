@@ -241,7 +241,7 @@ public class Player extends Entity {
                 case "Door Key":
                 gp.playSE(5);
                 gp.obj[i]=null;
-                disText=true;
+                // disText=true;
                 gp.ui.setMessage("Ai gasit o cheie");
                // System.out.println("Ai gasit un key!");
                 hasKey++;
@@ -250,7 +250,7 @@ public class Player extends Entity {
                 case "Silver Key":
                 gp.playSE(5);
                 gp.obj[i]=null;
-                disText=true;
+                // disText=true;
                 gp.ui.setMessage("Ai gasit un Silver key!");
                 hasSKey++;
                 break;
@@ -259,7 +259,7 @@ public class Player extends Entity {
                 gp.playSE(5);
                 gp.obj[i]=null;
                 hasGoldKey++;
-                disText=true;
+                // disText=true;
                 gp.ui.setMessage("Ai gasit un Gold key!");
                 hasGKey=true;
                 
@@ -268,7 +268,7 @@ public class Player extends Entity {
                 if(hasSKey>0){
                     gp.playSE(4);
                     gp.obj[i]=null;
-                    disText=true;
+                    // disText=true;
                     gp.ui.setMessage("Ai deschis un Silver Chest!!!");
                     hasSKey--;
                     if(hasGKey==false)
@@ -281,7 +281,7 @@ public class Player extends Entity {
                 if(hasGKey||hasGoldKey>0){
                     gp.playSE(4);
                     gp.obj[i]=null;
-                    disText=true;
+                    // disText=true;
                     gp.ui.setMessage("Ai deschis un Gold Chest!!!");
                     hasGKey=false;
                     // hasPBoots=true;
@@ -301,7 +301,7 @@ public class Player extends Entity {
                 if(hasKey>0){
                     gp.playSE(2);
                     gp.obj[i]=null;
-                    disText=true;
+                    // disText=true;
                     System.out.println("Ai deschis o usa!");
                     hasKey--;
                 }
@@ -310,7 +310,7 @@ public class Player extends Entity {
                 
                     gp.playSE(3);
                     gp.obj[i]=null;
-                    disText=true;
+                    // disText=true;
                     gp.ui.setMessage("Ai gasit o pereche de boots! (speed +1)");
                     
                    
