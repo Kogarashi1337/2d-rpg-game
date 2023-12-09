@@ -8,6 +8,16 @@ public class KeyHandler implements KeyListener{
     public boolean eFlag=false;
     public boolean rFlag=false;
     public boolean timePressed=false;
+    public boolean pauseGame;
+    GamePanel gp;
+
+    //Constructor here
+    public KeyHandler(GamePanel gp){
+        this.gp = gp;
+
+    }
+    //Constructor here
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -49,10 +59,30 @@ public class KeyHandler implements KeyListener{
           
         }
 
+        // if(code==KeyEvent.VK_ESCAPE){
+
+            // switch(gp.gameState){
+            //         case gp.playState:
+            //         gp.gameState=gp.pauseState;
+            //         break;
+            //         case gp.pauseState:
+            //         gp.gameState=gp.playState;
+            //         break;
+            //     }
+            // pauseGame=false;
+            // if(gp.gameState == gp.playState){
+            //     gp.gameState = gp.pauseState;
+                
+            // }
+            // else if(gp.gameState == gp.pauseState){
+            //     gp.gameState = gp.playState;
+            // }
+        // }
+        }
            
         
         
-    }
+    
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -84,6 +114,16 @@ public class KeyHandler implements KeyListener{
                 eFlag=true;
             }
            
+        }
+        if(code==KeyEvent.VK_ESCAPE){
+         // pauseGame=true;
+            if(gp.gameState == gp.playState){
+                gp.gameState = gp.pauseState;
+                
+            }
+            else if(gp.gameState == gp.pauseState){
+                gp.gameState = gp.playState;
+            }
         }
         if(code==KeyEvent.VK_RIGHT){
 

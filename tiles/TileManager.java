@@ -21,14 +21,15 @@ public class TileManager {
     public int mapTileNum[][];
     ArrayList<String> fileNames=new ArrayList<>();
     ArrayList<String> collisionStatus=new ArrayList<>();
-
+    // ArrayList<String> objectChecker=new ArrayList<>();
+    // public static int Coordinates[][];
 
     public TileManager(GamePanel gp){
 
         this.gp=gp;
-
+        // int Coordinates[][]=new int[2][10];
         //Read tileData file
-        InputStream is=getClass().getResourceAsStream("/Maps/tile_01.txt");
+        InputStream is=getClass().getResourceAsStream("/Maps/tile_03.txt");
         BufferedReader br=new BufferedReader(new InputStreamReader(is));
 
         //Getting tile names and collision types from the file
@@ -51,25 +52,29 @@ public class TileManager {
         getTileImage();
 
         //Getting the maxrow and maxcol of the map
-        is = getClass().getResourceAsStream("/Maps/map_01.txt");
+        is = getClass().getResourceAsStream("/Maps/map_03.txt");
         br = new BufferedReader(new InputStreamReader(is));
 
         try {
             
             String line2 = br.readLine();
             String maxTile[]=line2.split(" ");
-
+            // String check;
             gp.maxWorldCol=maxTile.length;
             gp.maxWorldRow=maxTile.length;
-
+            // while ((check = br.readLine())!= null) {
+               
+            //     objectChecker.add(check);
+            // }
             br.close();
         } catch (IOException e) {
             System.out.println("\nException!!!\n");
         }
         
         mapTileNum=new int[gp.maxWorldCol][gp.maxWorldRow];
-        loadMap("/Maps/map_01.txt");
+        loadMap("/Maps/map_03.txt");
 
+        // checkTheObj();
         //loadMap("/Maps/Map_01.txt");
         // loadMap("/Maps/Map_04.txt");
     }
@@ -85,6 +90,28 @@ public class TileManager {
     //     loadMap("/Maps/Map_02.txt");
     // }
 
+        // public void checkTheObj(){
+        //     int hit=0;
+        //     for (int i = 0; i < objectChecker.size(); i++) {
+        //         String check;
+                
+        //         check = objectChecker.get(i);
+                
+               
+        //         String Strikes[]=check.split(" ");
+        //         for(int j=0; j < Strikes.length;j++){
+                    
+        //             if(Strikes[j].equals("13")){
+        //                 Coordinates[0][hit]=j;
+        //                 Coordinates[1][hit]=i;
+        //                 hit++;
+        //             }
+        //         }
+           
+        //     }
+        // }
+
+
     public void getTileImage(){
 
         for(int i=0; i < fileNames.size(); i++){
@@ -94,7 +121,9 @@ public class TileManager {
 
             //Getting the name (type of tile) from the filename 
             fileName = fileNames.get(i);
-
+            
+            //Chest position detection
+            
             //getting the collision type from the file by converting from string type(false/true)
             if(collisionStatus.get(i).equals("true")){
                 collision=true;
@@ -154,14 +183,18 @@ public class TileManager {
 
     }
 
+
+
+
+
     public void loadMap(String filepath){
         try {
             InputStream is = getClass().getResourceAsStream(filepath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
+        
             int col=0;
             int row=0;
-            
+           
             while(col<gp.maxWorldCol && row<gp.maxWorldRow){
                 
                 String line = br.readLine();
@@ -173,6 +206,8 @@ public class TileManager {
                     int num=Integer.parseInt(numbers[col]);
 
                     mapTileNum[col][row]=num;
+                 
+
                     col++;
                 }
 

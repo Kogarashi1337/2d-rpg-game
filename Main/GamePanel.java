@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     int FPS=60;//running FPS
 
     // SYSTEM 
-     KeyHandler keyH=new KeyHandler();
+     KeyHandler keyH=new KeyHandler(this);
     TileManager tileM = new TileManager(this);
     
     // TileManager tileM2 = new TileManager(this,0);
@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable{
     Sound se = new Sound(); 
     public CollisionChecker cChecker=new CollisionChecker(this);
     public AssetSetter aSetter=new AssetSetter(this);
-    public UI ui=new UI(this);
+  
     Thread gameThread;
     
     
@@ -53,6 +53,16 @@ public class GamePanel extends JPanel implements Runnable{
     public SuperObject[] obj =new SuperObject[17];
     Wolf wolf=new Wolf(this,keyH);
     // Sheep sheep=new Sheep(this,keyH);
+
+//UI HERE
+  public UI ui=new UI(this,player);
+
+
+
+    //GAME STATE
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
 
     
  
@@ -68,6 +78,8 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame(){
         aSetter.setObject();
         playMusic(0);
+        stopMusic();
+        gameState = playState;
     }
 
     public void startGameThread(){
@@ -146,9 +158,28 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
     public void update(){
-       // wolf.update();
-        player.update();
+
+
+        if(gameState == playState){
+            player.update();
+        // wolf.update();
         // sheep.update();
+        }
+        if(gameState == pauseState){
+            //pause nothing happens
+        }
+        // if(keyH.pauseGame){
+        //     switch(gameState){
+        //         case playState:
+        //         gameState=pauseState;
+        //         break;
+        //         case pauseState:
+        //         gameState=playState;
+        //         break;
+        //     }
+        //     keyH.pauseGame=false;
+        // }
+        
     }
     public void paintComponent(Graphics g){
 

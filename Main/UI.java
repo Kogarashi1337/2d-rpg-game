@@ -5,14 +5,16 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import Entity.Player;
 import object.OBJ_Boots;
 import object.OBJ_GoldKey;
 import object.OBJ_Key;
 import object.OBJ_SilverKey;
 
 public class UI {
-    
+    Player pl;
     GamePanel gp;
+    Graphics2D g2;
     Font arial_40;
     BufferedImage[] itemImage;
     public boolean messageOn = false;
@@ -21,7 +23,8 @@ public class UI {
     public int msgX;
     public int msgY;
     public float alpha;
-    public UI(GamePanel gp){
+    public UI(GamePanel gp,Player pl){
+        this.pl=pl;
         this.gp = gp;
         itemImage=new BufferedImage[5];
         arial_40= new Font("Arial", Font.BOLD, 10);
@@ -58,19 +61,19 @@ public class UI {
         g2.setFont(arial_40);
         g2.setColor(Color.white);
         
-        if(gp.player.hasKey>0){
+    //     if(gp.player.hasKey>0){
         
-        g2.drawImage(itemImage[0], gp.tileSize/2,gp.tileSize/2,gp.tileSize/3,gp.tileSize/3,null);
-        g2.drawString(" x "+gp.player.hasKey, 38, 35);
-        }
-         if(gp.player.hasSKey>0){
-        g2.drawImage(itemImage[1], gp.tileSize/2,gp.tileSize-8,gp.tileSize/3,gp.tileSize/3,null);
-        g2.drawString(" x "+gp.player.hasSKey, 38, 51);
-        }
-       if(gp.player.hasGoldKey>0){
-        g2.drawImage(itemImage[2], gp.tileSize/2, gp.tileSize+(gp.tileSize/2)-16, gp.tileSize/3,gp.tileSize/3,null);
-        g2.drawString(" x "+gp.player.hasGoldKey, 38, 70);
-       }
+    //     g2.drawImage(itemImage[0], gp.tileSize/2,gp.tileSize/2,gp.tileSize/3,gp.tileSize/3,null);
+    //     g2.drawString(" x "+gp.player.hasKey, 38, 35);
+    //     }
+    //      if(gp.player.hasSKey>0){
+    //     g2.drawImage(itemImage[1], gp.tileSize/2,gp.tileSize-8,gp.tileSize/3,gp.tileSize/3,null);
+    //     g2.drawString(" x "+gp.player.hasSKey, 38, 51);
+    //     }
+    //    if(gp.player.hasGoldKey>0){
+    //     g2.drawImage(itemImage[2], gp.tileSize/2, gp.tileSize+(gp.tileSize/2)-16, gp.tileSize/3,gp.tileSize/3,null);
+    //     g2.drawString(" x "+gp.player.hasGoldKey, 38, 70);
+    //    }
 
         if(gp.player.epboots){
              if(gp.player.hasPBoots){
@@ -83,16 +86,18 @@ public class UI {
             
         }
 
-       if(messageOn){
-        alpha=alpha-(alpha/60);
+       if(messageOn && pl.disText==true){
+        alpha=alpha-(alpha/gp.FPS);
         g2.setColor(new Color(255,255,255,(int) (alpha*255)));
         g2.drawString(message, msgX, msgY--);
         
         msgCtr++;//(60 fps - 120 ticks = 2 seconds)
 
-        if(msgCtr>60){
+        if(msgCtr>gp.FPS){
             msgCtr=0;
+            pl.disText=false;
             messageOn=false;
+
         }
        }
         

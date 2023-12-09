@@ -30,6 +30,7 @@ public class Player extends Entity {
     public  boolean hasPBoots=false;
     public String boots="unequipped";
     public boolean epboots=false;
+    public boolean disText=false;
 
     public Player(GamePanel gp,KeyHandler keyH){
         this.gp = gp;
@@ -83,7 +84,7 @@ public class Player extends Entity {
     }
     public void setdefaultValues(){
         this.worldX = gp.tileSize*39;
-        this.worldY = gp.tileSize*24;
+        this.worldY = gp.tileSize*29;
         this.speed=4;
         direction="down";
     }
@@ -101,6 +102,21 @@ public class Player extends Entity {
     }
 
     public void update(){
+
+    //    while(keyH.pauseGame){
+    //         if(gp.gameState==gp.playState){
+    //             gp.gameState=gp.pauseState;
+    //             keyH.pauseGame=false;
+    //             break;
+    //         }
+    //         if(gp.gameState==gp.pauseState){
+    //             gp.gameState=gp.playState;
+    //             keyH.pauseGame=false;
+    //            break;
+    //         }
+
+    //     }
+
         if(keyH.radioPressedR){
             switch(radio){
                 case 0: radio = 1;
@@ -225,6 +241,7 @@ public class Player extends Entity {
                 case "Door Key":
                 gp.playSE(5);
                 gp.obj[i]=null;
+                disText=true;
                 gp.ui.setMessage("Ai gasit o cheie");
                // System.out.println("Ai gasit un key!");
                 hasKey++;
@@ -233,6 +250,7 @@ public class Player extends Entity {
                 case "Silver Key":
                 gp.playSE(5);
                 gp.obj[i]=null;
+                disText=true;
                 gp.ui.setMessage("Ai gasit un Silver key!");
                 hasSKey++;
                 break;
@@ -241,6 +259,7 @@ public class Player extends Entity {
                 gp.playSE(5);
                 gp.obj[i]=null;
                 hasGoldKey++;
+                disText=true;
                 gp.ui.setMessage("Ai gasit un Gold key!");
                 hasGKey=true;
                 
@@ -249,6 +268,7 @@ public class Player extends Entity {
                 if(hasSKey>0){
                     gp.playSE(4);
                     gp.obj[i]=null;
+                    disText=true;
                     gp.ui.setMessage("Ai deschis un Silver Chest!!!");
                     hasSKey--;
                     if(hasGKey==false)
@@ -261,6 +281,7 @@ public class Player extends Entity {
                 if(hasGKey||hasGoldKey>0){
                     gp.playSE(4);
                     gp.obj[i]=null;
+                    disText=true;
                     gp.ui.setMessage("Ai deschis un Gold Chest!!!");
                     hasGKey=false;
                     // hasPBoots=true;
@@ -280,6 +301,7 @@ public class Player extends Entity {
                 if(hasKey>0){
                     gp.playSE(2);
                     gp.obj[i]=null;
+                    disText=true;
                     System.out.println("Ai deschis o usa!");
                     hasKey--;
                 }
@@ -288,6 +310,7 @@ public class Player extends Entity {
                 
                     gp.playSE(3);
                     gp.obj[i]=null;
+                    disText=true;
                     gp.ui.setMessage("Ai gasit o pereche de boots! (speed +1)");
                     
                    
