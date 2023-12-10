@@ -222,6 +222,8 @@ public class GamePanel extends JPanel implements Runnable{
         long drawEnd=System.nanoTime();
         long end=drawEnd-drawStart;
         int fps=(int) (1000000000/end);
+        
+        g2.setFont(ui.getFont(1));
         g2.setColor(Color.white);
         g2.drawString("FPS: "+ fps, 1080, 40);
         System.out.println("Draw time -> " + end);
