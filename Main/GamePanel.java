@@ -2,9 +2,11 @@ package Main;
 import javax.swing.JPanel;
 import javax.swing.plaf.DimensionUIResource;
 
+import Entity.Entity;
+
 import Entity.Player;
-import Entity.Sheep;
-import Entity.Wolf;
+// import Entity.Sheep;
+// import Entity.Wolf;
 import object.SuperObject;
 import tiles.TileManager;
 
@@ -51,8 +53,11 @@ public class GamePanel extends JPanel implements Runnable{
     //ENTITY AND OBJECT
     public Player player=new Player(this, keyH);
     public SuperObject[] obj =new SuperObject[17];
-    Wolf wolf=new Wolf(this,keyH);
+    //Wolf wolf=new Wolf(this,keyH);
     // Sheep sheep=new Sheep(this,keyH);
+    public Entity npc[]=new Entity[10];
+  //  public NPC_OldMan oldMan=new NPC_OldMan(this);
+
 
 //UI HERE
   public UI ui=new UI(this,player);
@@ -77,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setupGame(){
         aSetter.setObject();
+        aSetter.setNPC();
         playMusic(0);
         stopMusic();
         gameState = playState;
@@ -162,6 +168,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         if(gameState == playState){
             player.update();
+    
         // wolf.update();
         // sheep.update();
         }
@@ -204,6 +211,14 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
         }
+
+        //NPC
+        for(int j=0;j<npc.length;j++){
+            if(npc[j]!=null){
+                npc[j].draw(g2);
+            }
+        }
+
         //PLAYER
         player.draw(g2);
         // sheep.draw(g2);

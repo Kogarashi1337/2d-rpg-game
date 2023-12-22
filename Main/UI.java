@@ -18,7 +18,7 @@ public class UI {
     Font arial_40;
     Font arial_80;
     Font arial_100;
-    BufferedImage[] itemImage;
+    //BufferedImage[] itemImage;
 
     public boolean messageOn = false;
     public boolean pMessageOn = false;
@@ -57,18 +57,18 @@ public class UI {
     }
     public void setsImage(int imgN){
 
-        itemImage=new BufferedImage[imgN];
-        OBJ_Key key=new OBJ_Key(gp);
-        itemImage[0]=key.image;
+        // itemImage=new BufferedImage[imgN];
+        // OBJ_Key key=new OBJ_Key(gp);
+        // itemImage[0]=key.image;
 
-        OBJ_SilverKey skey=new OBJ_SilverKey(gp);
-        itemImage[1]=skey.image;
+        // OBJ_SilverKey skey=new OBJ_SilverKey(gp);
+        // itemImage[1]=skey.image;
         
-        OBJ_GoldKey gkey=new OBJ_GoldKey(gp);
-        itemImage[2]=gkey.image;
+        // OBJ_GoldKey gkey=new OBJ_GoldKey(gp);
+        // itemImage[2]=gkey.image;
 
-        OBJ_Boots boots=new OBJ_Boots(gp);
-        itemImage[3]=boots.image;
+        // OBJ_Boots boots=new OBJ_Boots(gp);
+        // itemImage[3]=boots.image;
     }
     
     public void setMessage(String text){
@@ -158,8 +158,8 @@ public class UI {
         int x = getTextWidth(text);
         int y = gp.screenHeight/2;
        // int y = 520/2;
-        System.out.println("\nx ->"+x);
-        System.out.println("\ny ->"+y);
+        // System.out.println("\nx ->"+x);
+        // System.out.println("\ny ->"+y);
         g2.drawString(text, x, y);
     }
     public int getTextWidth(String text){

@@ -1,6 +1,5 @@
 package Entity;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -12,14 +11,14 @@ import Main.GamePanel;
 import Main.KeyHandler;
 
 public class Wolf extends Entity{
-     GamePanel gp ;
+ 
     KeyHandler keyH;
 
     public final int petScreenX;
     public final int petScreenY;
 
     public Wolf(GamePanel gp,KeyHandler keyH){
-        this.gp = gp;
+        super(gp);
         this.keyH = keyH;
         setdefaultValues();
         getPetImage();
