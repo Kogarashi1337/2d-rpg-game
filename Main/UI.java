@@ -3,13 +3,9 @@ package Main;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+// import java.awt.image.BufferedImage;
 
 import Entity.Player;
-import object.OBJ_Boots;
-import object.OBJ_GoldKey;
-import object.OBJ_Key;
-import object.OBJ_SilverKey;
 
 public class UI {
     Player pl;

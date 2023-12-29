@@ -13,6 +13,8 @@ import Main.UtilityTool;
 public class Entity {
     public int worldX,worldY;
     public int speed;
+    public int actionLockCounter;
+    public boolean movementOn=false;
     
     public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2,down1b,down2b,left1b,left2b,right1b,right2b,up1b,up2b, xu1,xu2,xd1,xd2,xl1,xl2,xr1,xr2;
     public String direction;
@@ -22,7 +24,7 @@ public class Entity {
  
     public Rectangle solidArea=new Rectangle(0,0,48,48);
     public int solidAreaDefaultX,solidAreaDefaultY;
-    public boolean collisionOn=false;
+    public boolean collisionOn=true;
     GamePanel gp;
 
 
@@ -34,8 +36,43 @@ public class Entity {
    
     }
 
-    public void setAction(){}
-    public void update(){}
+    public void setAction(){
+
+
+    }
+    public void update(){
+
+        setAction();
+        
+        collisionOn=false;
+        gp.cChecker.checkTile(this);
+        gp.cChecker.checkObject(this, false);
+        gp.cChecker.checkPlayer(this);
+
+        //if collision is false , player can move
+        if(collisionOn==false){
+
+            switch(direction){
+                case"up":  worldY-=speed;break;
+                case"down": worldY+=speed;break;
+                case"left":worldX-=speed;break;
+                case"right":worldX+=speed;break;
+            }
+        }
+
+
+        numMoves++;
+        if(numMoves>10){
+            
+            if(moveType==1){
+                moveType=2;
+            }else if(moveType==2){
+                moveType=1;
+            }
+            numMoves=0;
+
+        }
+    }
 
 
     public void draw(Graphics2D g2){
@@ -48,38 +85,42 @@ public class Entity {
            worldX - gp.tileSize<gp.player.worldX + gp.player.screenX &&
            worldY + gp.tileSize>gp.player.worldY - gp.player.screenY &&
            worldY - gp.tileSize<gp.player.worldY + gp.player.screenY){
+           
             
+          
             switch(direction){
 
-                case "up": 
-                if(moveType==1){
-                 image=up1;
-                }else{
-                 image=up2;
-                }
-                break;
-     
-                case "down":if(moveType==1){
-                 image=down1;
-                }else{
-                 image=down2;
-                }
-                break;
-     
-                case "left": if(moveType==1){
-                 image=left1;
-                }else{
-                 image=left2;
-                }
-                break;
-                
-                case "right": if(moveType==1){
-                 image=right1;
-                }else{
-                 image=right2;
-                }
-                break;
-             }         
+                    case "up": 
+                    if((moveType==1)&&(collisionOn==false)){
+                    image=up1;
+                    }else{
+                    image=up2;
+                    }
+                    break;
+        
+                    case "down":if((moveType==1)&&(collisionOn==false)){
+                    image=down1;
+                    }else{
+                    image=down2;
+                    }
+                    break;
+        
+                    case "left": if((moveType==1)&&(collisionOn==false)){
+                    image=left1;
+                    }else{
+                    image=left2;
+                    }
+                    break;
+                    
+                    case "right": if((moveType==1)&&(collisionOn==false)){
+                    image=right1;
+                    }else{
+                    image=right2;
+                    }
+                    break;
+            }         
+           
+            
                 
                
     

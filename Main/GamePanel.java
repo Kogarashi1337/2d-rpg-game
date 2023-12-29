@@ -167,8 +167,16 @@ public class GamePanel extends JPanel implements Runnable{
 
 
         if(gameState == playState){
+            //UPDATE PLAYER
             player.update();
-    
+            //UPDATE NPC
+           for(int i=0;i<npc.length;i++){
+            if(npc[i]!=null){
+                npc[i].update();
+            }
+        }
+
+
         // wolf.update();
         // sheep.update();
         }

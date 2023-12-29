@@ -30,6 +30,25 @@ public class NPC_OldMan extends Entity{
     public void setAction(){
         Random random=new Random();
         int i=random.nextInt(100)+1;
+        actionLockCounter++;
+
+        if(actionLockCounter == 120){
+
+            if(i <= 25){
+            direction="left";
+            }
+            if((i > 25)&&(i<=50)){
+            direction="right";
+            }
+            if((i > 50)&&(i <= 75)){
+            direction="down";
+            }
+            if(i > 75){
+            direction="up";
+            }
+            actionLockCounter=0; 
+        }
+       
     }
 
 
