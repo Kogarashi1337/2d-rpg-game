@@ -7,11 +7,13 @@ import Main.GamePanel;
 
 public class NPC_OldMan extends Entity{
     
-    public NPC_OldMan(GamePanel gp){
+    public NPC_OldMan(GamePanel gp,String name){
        super(gp);
        direction="down";
        speed=1;
+       this.name=name;
        getImage();
+       setDialogue();
     }
         
  
@@ -26,7 +28,11 @@ public class NPC_OldMan extends Entity{
         right1=setup("/npc/old_man_right_1");
         right2=setup("/npc/old_man_right_2");
 
+    
+    }public void setDialogue(){
+        dialogues[0]="Hello bruv! My name's "+this.name;
     }
+
     public void setAction(){
         Random random=new Random();
         int i=random.nextInt(100)+1;
@@ -50,8 +56,10 @@ public class NPC_OldMan extends Entity{
         }
        
     }
-
-
+    public void speak(){
+        gp.ui.currentDialogue=dialogues[0];
+    }
+    
 
 
 }

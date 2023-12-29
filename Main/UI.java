@@ -1,5 +1,6 @@
 package Main;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -14,22 +15,27 @@ public class UI {
     Font arial_40;
     Font arial_80;
     Font arial_100;
+    Font arial_60;
     //BufferedImage[] itemImage;
 
     public boolean messageOn = false;
     public boolean pMessageOn = false;
     public String message="";
     public String pauseMessage="";
+    public String currentDialogue="";
+
     public int msgCtr;
     public int msgX;
     public int msgY;
-    public float alpha;
     public int imgN;
+    public float alpha;
+    
 
 
     //Constructor HERE
     public UI(GamePanel gp,Player pl){
         arial_40= new Font("Arial", Font.BOLD, 10);
+        arial_60= new Font("Arial", Font.BOLD, 20);
         arial_80= new Font("Arial", Font.BOLD, 35);
         arial_100= new Font("Arial", Font.BOLD, 100);
         this.pl=pl;
@@ -46,6 +52,8 @@ public class UI {
             return arial_80;
             case 3:
             return arial_100;
+            case 4:
+            return arial_60;
             default:
             return this.arial_40;
         }
@@ -90,41 +98,6 @@ public class UI {
         g2.setFont(getFont(1));
         g2.setColor(Color.white);
         
-        //     if(gp.player.hasKey>0){
-            
-        //     g2.drawImage(itemImage[0], gp.tileSize/2,gp.tileSize/2,gp.tileSize/3,gp.tileSize/3,null);
-        //     g2.drawString(" x "+gp.player.hasKey, 38, 35);
-        //     }
-        //      if(gp.player.hasSKey>0){
-        //     g2.drawImage(itemImage[1], gp.tileSize/2,gp.tileSize-8,gp.tileSize/3,gp.tileSize/3,null);
-        //     g2.drawString(" x "+gp.player.hasSKey, 38, 51);
-        //     }
-        //    if(gp.player.hasGoldKey>0){
-        //     g2.drawImage(itemImage[2], gp.tileSize/2, gp.tileSize+(gp.tileSize/2)-16, gp.tileSize/3,gp.tileSize/3,null);
-        //     g2.drawString(" x "+gp.player.hasGoldKey, 38, 70);
-        //    }
-
-        // if(gp.player.epboots){
-        //      if(gp.player.hasPBoots){
-        //      gp.player.boots="equipped";
-        //     }else{
-        //       gp.player.boots="unequipped";
-        //     }
-        //     g2.drawImage(itemImage[3], gp.tileSize/2, gp.tileSize+(gp.tileSize)-8, gp.tileSize/3,gp.tileSize/3,null);
-        //     g2.drawString(" is "+gp.player.boots, 38, 100);
-            
-        // }
-
-        //Pause Menu Message
-        // if(pMessageOn){
-        //     g2.setFont(arial_80);
-        //     messageOn=false;
-        //     g2.setColor(new Color(200,200,255,(int) (alpha*255)));
-        //     g2.drawString(pauseMessage, msgX, msgY);
-            
-
-        // }
-
         //Item pickup message
         // if(messageOn){
         //     alpha=alpha-(alpha/gp.FPS);
@@ -141,6 +114,13 @@ public class UI {
         //     }
         // }
 
+        if(gp.gameState==gp.dialogueState)
+        {
+            drawDialogueScreen();
+        }
+        if (gp.gameState==gp.playState){
+            
+        }
         if (gp.gameState==gp.pauseState){
           drawPauseScreen();  
         }
@@ -163,5 +143,33 @@ public class UI {
        int textWidth=gp.screenWidth/2-length/2;
       // int textWidth=1080/2-length/2;
         return textWidth;
+    }
+    public void drawDialogueScreen(){
+        //window
+        int x=gp.tileSize*2;
+        int y=gp.tileSize/2;
+        int width=gp.screenWidth-(gp.tileSize*4);
+        int height=gp.tileSize*4;
+
+        drawSubWindow(x, y, width, height);
+
+        g2.setFont(getFont(4));
+        x +=gp.tileSize;
+        y +=gp.tileSize;
+        g2.drawString(currentDialogue,x,y);
+        //String text = "Hello, my name is "+gp.npc[i].name();
+    }
+
+
+    public void drawSubWindow(int x,int y, int width,int height){
+        Color c=new Color(0,0,0,210);
+        g2.setColor(c);
+        g2.fillRoundRect( x, y, width, height, 35, 35);
+
+        //white outline
+        c=new Color(255,255,255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
     }
 }
