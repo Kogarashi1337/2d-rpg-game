@@ -20,6 +20,7 @@ public class UI {
 
     public boolean messageOn = false;
     public boolean pMessageOn = false;
+    public boolean pauseAnim = false;
     public String message="";
     public String pauseMessage="";
     public String currentDialogue="";
@@ -29,6 +30,7 @@ public class UI {
     public int msgY;
     public int imgN;
     public float alpha;
+    
     
 
 
@@ -87,7 +89,7 @@ public class UI {
     public void pauseMessage(String text){
         msgCtr=0;
         pauseMessage=text;
-        pMessageOn=true;
+
         
         msgX=475;
         msgY=300;
@@ -114,14 +116,23 @@ public class UI {
         //     }
         // }
 
+        //PLAY 
+        if (gp.gameState==gp.playState){
+          // pMessageOn=false;
+          // msgCtr=0;
+        }
+
+        //DIALOGUE
         if(gp.gameState==gp.dialogueState)
-        {
+        {   
+          //  pMessageOn=false;
             drawDialogueScreen();
         }
-        if (gp.gameState==gp.playState){
-            
-        }
+
+        //PAUSE
         if (gp.gameState==gp.pauseState){
+            
+            //  pMessageOn=true;
           drawPauseScreen();  
         }
 
@@ -129,21 +140,54 @@ public class UI {
         //g2.drawString("GKey = "+gp.player.hasGoldKey, 0, 13*gp.tileSize);//gold
     }
     public void drawPauseScreen(){
-         g2.setFont(getFont(2));
+        g2.setFont(getFont(2));
         String text = "PAUSED";
+        
+        
         int x = getTextWidth(text);
         int y = gp.screenHeight/2;
+          //  g2.setColor(new Color(255,255,255,(int) (alpha*255)));
+            g2.drawString(text, x, y);
+        
+            // if(pMessageOn){
+            //     if(pauseAnim==false){
+            //         alpha=alpha-(alpha/60);   
+            //     }
+            //     else{
+            //         alpha=alpha+(alpha/60);
+            //     }
+                   
+            //      msgCtr++;
+
+            //     if(msgCtr>60){
+            //         if(pauseAnim){
+            //                pauseAnim=false;
+            //         }
+            //         else{
+            //                pauseAnim=true;
+            //         }
+                       
+            //         msgCtr=0;
+            //     }
+       
+            // }
        // int y = 520/2;
         // System.out.println("\nx ->"+x);
         // System.out.println("\ny ->"+y);
-        g2.drawString(text, x, y);
+        
     }
+
+
+
     public int getTextWidth(String text){
         int length=(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
        int textWidth=gp.screenWidth/2-length/2;
       // int textWidth=1080/2-length/2;
         return textWidth;
     }
+
+
+    
     public void drawDialogueScreen(){
         //window
         int x=gp.tileSize*2;
@@ -156,8 +200,14 @@ public class UI {
         g2.setFont(getFont(4));
         x +=gp.tileSize;
         y +=gp.tileSize;
-        g2.drawString(currentDialogue,x,y);
         //String text = "Hello, my name is "+gp.npc[i].name();
+
+        for(String line: currentDialogue.split("\n")){
+            g2.drawString(line,x,y);
+            y+=40;
+        }
+        
+        
     }
 
 

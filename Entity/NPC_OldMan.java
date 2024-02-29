@@ -3,9 +3,12 @@ package Entity;
 import java.util.Random;
 
 import Main.GamePanel;
+import Main.KeyHandler;
 
 
 public class NPC_OldMan extends Entity{
+
+    KeyHandler keyH;
     
     public NPC_OldMan(GamePanel gp,String name){
        super(gp);
@@ -15,7 +18,7 @@ public class NPC_OldMan extends Entity{
        getImage();
        setDialogue();
     }
-        
+    
  
     public void getImage(){
        
@@ -30,7 +33,14 @@ public class NPC_OldMan extends Entity{
 
     
     }public void setDialogue(){
-        dialogues[0]="Hello bruv! My name's "+this.name;
+        dialogues[0] = "Hello bruv! My name's "+this.name+"!";
+        dialogues[1] = "Greetings, adventurer! The name's " + this.name + ". What brings you to these parts?";
+        dialogues[2] = "Ahoy! " + this.name + " at your service. Anything I can do for you?";
+        dialogues[3] = "Salutations! I'm " + this.name + ". Need information or a helping hand?";
+        dialogues[4] = "Hey! " + this.name + " here. Ready for a chat or a quest, perhaps?";
+        dialogues[5] = "Hey! " + this.name + " here. Ready for a chat or a quest, perhaps?";
+       
+
     }
 
     public void setAction(){
@@ -56,10 +66,36 @@ public class NPC_OldMan extends Entity{
         }
        
     }
+
+
     public void speak(){
-        gp.ui.currentDialogue=dialogues[0];
+
+        if(dialogues[dialogueIndex]==null){
+            dialogueIndex=0;
+        }
+        gp.ui.currentDialogue=dialogues[dialogueIndex];
+        dialogueIndex++;
+        //direction when speaking
+        switch(gp.player.direction){
+            case "up":
+            direction = "down";
+            break;
+            case "down":
+            direction = "up";
+            break;
+            case "left":
+            direction = "right";
+            break;
+            case "right":
+            direction = "left";
+            break;
+
+        }
+        //go to next line of dialogue
+        
+       
     }
-    
+
 
 
 }

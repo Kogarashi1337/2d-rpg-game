@@ -14,6 +14,7 @@ public class Entity {
     public int worldX,worldY;
     public int speed;
     public int actionLockCounter;
+    public int dialogueIndex=0;
     public boolean movementOn=false;
     public String name;
     
@@ -44,7 +45,7 @@ public class Entity {
     }
 
     public void speak(){
-        
+
     }
 
     public void update(){
@@ -57,7 +58,7 @@ public class Entity {
         gp.cChecker.checkPlayer(this);
 
         //if collision is false , player can move
-        if(collisionOn==false){
+       if(collisionOn==false){
 
             switch(direction){
                 case"up":  worldY-=speed;break;
@@ -145,7 +146,9 @@ public class Entity {
             e.printStackTrace();
         }
         return image;
-    }   
+    }
 
+
+    
 
 } 

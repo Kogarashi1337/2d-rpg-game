@@ -344,11 +344,29 @@ public class Player extends Entity {
 
     }
 
+    //NPC COLLISION INTERACTION
     public void interactNPC(int i){
         if(i!=999){
-            gp.gameState=gp.dialogueState;
-            gp.npc[i].speak();
+            if(gp.keyH.enterPressed==true){
+
+                gp.gameState=gp.dialogueState;
+                gp.npc[i].speak();  
+            }
+           
+            
         }
+        gp.keyH.enterPressed=false;
+    }
+    
+    //TIMER BETWEEN COLLISION INTERACTIONS
+    public void setDialogueTimer(){
+        int i;
+        for(i=0;i<1200;i++){
+            System.out.println("Chat timer countdown: "+(1200-i));
+          
+          
+        }
+
     }
 
     public void draw(Graphics2D g2){

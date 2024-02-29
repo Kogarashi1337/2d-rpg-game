@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
     int FPS=60;//running FPS
 
     // SYSTEM 
-     KeyHandler keyH=new KeyHandler(this);
+    public KeyHandler keyH=new KeyHandler(this);
     TileManager tileM = new TileManager(this);
     
     // TileManager tileM2 = new TileManager(this,0);
@@ -241,19 +241,36 @@ public class GamePanel extends JPanel implements Runnable{
        ui.draw(g2);
         
        //DEBUG 2
-       if(keyH.timePressed){
+        if(keyH.timePressed){
 
-        long drawEnd=System.nanoTime();
-        long end=drawEnd-drawStart;
-        int fps=(int) (1000000000/end);
-        
-        g2.setFont(ui.getFont(1));
-        g2.setColor(Color.white);
-        g2.drawString("FPS: "+ fps, 1080, 40);
-        System.out.println("Draw time -> " + end);
-        System.out.println("FPS -> " + fps);
+            long drawEnd=System.nanoTime();
+            long end=drawEnd-drawStart;
+            int fps=(int) (1000000000/end);
+            
+            g2.setFont(ui.getFont(1));
+            g2.setColor(Color.white);
+            g2.drawString("FPS: "+ fps, 1080, 40);
+            System.out.println("Draw time -> " + end);
+            System.out.println("FPS -> " + fps);
+       } 
+       //WAIT FOR INTERACTION
+        // if(keyH.justDialogued==true){
+        //     long dialTimeS=System.nanoTime();
 
-       }
+        //     long dialS=(System.nanoTime()-dialTimeS);
+        //     int oneM=(int)(100000000/dialS);
+          
+        //     System.out.println(oneM);
+
+        //    if(oneM==1000){ 
+        //     oneM=0;
+        //     System.out.println("E gata tati");
+        //       keyH.justDialogued=false;
+             
+        //    }
+         
+        // }
+       
        
        
         //CLEAR

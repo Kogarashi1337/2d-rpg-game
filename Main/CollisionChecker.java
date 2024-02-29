@@ -176,6 +176,7 @@ public class CollisionChecker {
         }
         return index;
     }
+    //NPC TO PLAYER COLLISION
     public void checkPlayer(Entity entity){
                             //get entity's solid area position
                     entity.solidArea.x=entity.worldX + entity.solidArea.x;
