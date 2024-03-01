@@ -135,6 +135,12 @@ public class UI {
         //     }
         // }
 
+
+        //TITLESCREEN
+        if(gp.gameState==gp.titleState){
+            drawTitleScreen();
+        }
+
         //PLAY 
         if (gp.gameState==gp.playState){
           // pMessageOn=false;
@@ -158,10 +164,18 @@ public class UI {
       //  g2.drawString("SKey = "+gp.player.hasSKey, 0, 14*gp.tileSize);//silv
         //g2.drawString("GKey = "+gp.player.hasGoldKey, 0, 13*gp.tileSize);//gold
     }
+
+    public void drawTitleScreen(){
+        g2.setFont(getFont(5).deriveFont(Font.PLAIN,32F));
+        String text = "Lost Estharia";
+        int x = getTextWidth(text);
+        int y = gp.screenHeight/2;
+        g2.drawString(text, x, y);
+    }
+
     public void drawPauseScreen(){
         g2.setFont(getFont(2));
         String text = "PAUSED";
-        
         
         int x = getTextWidth(text);
         int y = gp.screenHeight/2;
@@ -190,9 +204,6 @@ public class UI {
             //     }
        
             // }
-       // int y = 520/2;
-        // System.out.println("\nx ->"+x);
-        // System.out.println("\ny ->"+y);
         
     }
 

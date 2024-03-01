@@ -66,6 +66,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     //GAME STATE
     public int gameState;
+    public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
@@ -86,7 +87,7 @@ public class GamePanel extends JPanel implements Runnable{
         aSetter.setNPC();
         playMusic(0);
         stopMusic();
-        gameState = playState;
+        gameState = titleState;
     }
 
     public void startGameThread(){
@@ -210,26 +211,43 @@ public class GamePanel extends JPanel implements Runnable{
  
         }
         
-        //TILE (map)
-        tileM.draw(g2);
-        
-        //ITEMS
-        for(int i=0;i<obj.length;i++){
-            if(obj[i] !=null){
-                obj[i].draw(g2,this);
+        //Title Screen
+        if(gameState==titleState){
+            ui.draw(g2);
+        }
+        //OTHERS
+        else{
+
+            //TILE (map)
+            tileM.draw(g2);
+            
+            //ITEMS
+            for(int i=0;i<obj.length;i++){
+                if(obj[i] !=null){
+                    obj[i].draw(g2,this);
+                }
+
+            } 
+
+            //NPC
+            for(int j=0;j<npc.length;j++){
+                if(npc[j]!=null){
+                    npc[j].draw(g2);
+                }
             }
 
+            //PLAYER
+            player.draw(g2);
+
+            //UI 
+            ui.draw(g2);
         }
 
-        //NPC
-        for(int j=0;j<npc.length;j++){
-            if(npc[j]!=null){
-                npc[j].draw(g2);
-            }
-        }
+      
+   
 
-        //PLAYER
-        player.draw(g2);
+       
+
         // sheep.draw(g2);
       //  wolf.draw(g2);
       
@@ -237,8 +255,7 @@ public class GamePanel extends JPanel implements Runnable{
       //  tileM2.draw(g2);
         //LAYER 2
        // tileM2.draw(g2);
-       //UI 
-       ui.draw(g2);
+     
         
        //DEBUG 2
         if(keyH.timePressed){
