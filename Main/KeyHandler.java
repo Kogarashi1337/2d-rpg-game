@@ -13,6 +13,8 @@ public class KeyHandler implements KeyListener{
     public boolean timePressed=false;
     public boolean pauseGame;
     public boolean justDialogued=false;
+    public boolean configure=false;
+    public float sl=0.0f;
     GamePanel gp;
 
     //Constructor here
@@ -60,6 +62,8 @@ public class KeyHandler implements KeyListener{
                         case 1:
                         break;
                         case 2:
+                        gp.ui.titleScreenState=2;
+                        gp.ui.commandNum=0;
                         break;
                         case 3:
                         System.exit(0);
@@ -111,6 +115,48 @@ public class KeyHandler implements KeyListener{
                         break;
                     }
                 }
+                break;
+                case 2 : //MENU
+                
+                if(code==KeyEvent.VK_W){
+                    gp.ui.commandNum--;
+                    configure=false;
+                    if(gp.ui.commandNum<0){
+                        gp.ui.commandNum=1;
+                    }
+                }
+                if(code==KeyEvent.VK_S){
+                    gp.ui.commandNum++;
+                    configure=false;
+                    if(gp.ui.commandNum>1){
+                        gp.ui.commandNum=0;
+                    }
+                }
+                if(code==KeyEvent.VK_ENTER){
+                    switch(gp.ui.commandNum){
+                        case 0:
+                       configure=true;
+                        break;
+                        case 1:
+                        gp.ui.titleScreenState=0;
+                        break;
+                    }
+                }
+                if(configure){
+                    if(code==KeyEvent.VK_D){
+
+                        gp.ui.volumeLevel+=10;
+                        sl=(float) (gp.ui.volumeLevel*6)/10;
+                        gp.music.setVolume(sl);
+                    }
+                    if(code==KeyEvent.VK_A){
+
+                        gp.ui.volumeLevel-=10;
+                        sl=(float) (gp.ui.volumeLevel*6)/10;
+                        gp.music.setVolume(sl);
+                    }
+                }
+                
                 break;
 
             }

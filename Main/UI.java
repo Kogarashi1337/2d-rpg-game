@@ -34,6 +34,7 @@ public class UI {
     public int msgX;
     public int msgY;
     public int imgN;
+    public int volumeLevel=-10;
     public int titleScreenState = 0;// State 0 for menu | State 1 for class selection
 
     public float alpha;
@@ -366,13 +367,88 @@ public class UI {
             int y = gp.tileSize*3; 
             g2.drawString(text, x, y);
 
-            //THIEF CLASS
+            //Sound Volume
             g2.setColor(new Color(3,4,94));
             g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
-            text="Thief";
-            x = getTextWidth(text);
+            text="Sound Volume";
+            x = getTextWidth(text)/2;
             y += gp.tileSize*3;
             if(commandNum==0){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+            //Sound Bar
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="||||||||||";
+            x = getTextWidth(text)+getTextWidth(text)/2;
+            String volm =text;
+            g2.drawString(text, x, y);
+            switch(volumeLevel){
+                case -60:
+                volm="|";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case -50:
+                volm="||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case -40:
+                volm="|||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case -30:
+                volm="||||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case -20:
+                volm="|||||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case -10:
+                volm="||||||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case 0:
+                volm="|||||||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case 10:
+                volm="||||||||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case 20:
+                volm="|||||||||";
+                g2.setColor(new Color(0,180,216));
+                break;
+
+                case 30:
+                volm="||||||||||";
+                g2.setColor(new Color(0,180,216));
+                break;
+                // g2.setColor(new Color(173,232,244));
+                // g2.drawString("=>", x-gp.tileSize, y);
+            }
+            g2.drawString(volm, x, y);
+
+            //Back to Menu button
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Back";
+            x = getTextWidth(text);
+            y += gp.tileSize*2;
+            if(commandNum==1){
                 
                 g2.setColor(new Color(173,232,244));
                 g2.drawString("=>", x-gp.tileSize, y);
