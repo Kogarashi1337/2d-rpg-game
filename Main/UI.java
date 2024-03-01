@@ -34,6 +34,8 @@ public class UI {
     public int msgX;
     public int msgY;
     public int imgN;
+    public int titleScreenState = 0;// State 0 for menu | State 1 for class selection
+
     public float alpha;
     
     
@@ -168,103 +170,193 @@ public class UI {
     }
 
     public void drawTitleScreen(){
-        
-        g2.setColor(new Color(3,4,94,(int) (alpha*200)));
-        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        if(titleScreenState==0){
 
-        if(pauseAnim==false){
-          alpha=alpha-(alpha/60);  
-        }
-          if(pauseAnim){
-            alpha=alpha+(alpha/60);
-        }
 
-        msgCtr++;
+        //MENU SCREEN
+            g2.setColor(new Color(3,4,94,(int) (alpha*200)));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
-        if(msgCtr>100){
+            if(pauseAnim==false){
+            alpha=alpha-(alpha/60);  
+            }
             if(pauseAnim){
-                pauseAnim=false;
+                alpha=alpha+(alpha/60);
             }
-            else{
-                pauseAnim=true;
+
+            msgCtr++;
+
+            if(msgCtr>100){
+                if(pauseAnim){
+                    pauseAnim=false;
+                }
+                else{
+                    pauseAnim=true;
+                }
+                msgCtr=0;
             }
-            msgCtr=0;
-        }
 
-        g2.setFont(getFont(5).deriveFont(Font.BOLD,96F));
-        String text = "Lost Estharia";
-        int x = getTextWidth(text);
-        int y = gp.tileSize*3;
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,96F));
+            String text = "Lost Estharia";
+            int x = getTextWidth(text);
+            int y = gp.tileSize*3;
 
-        g2.setColor(new Color(0,180,216));
-        g2.drawString(text, x+4, y+4);
-
-        g2.setColor(new Color(173,232,244));
-        g2.drawString(text, x, y);
-
-        //Mithras Trismegistus Image
-        x = gp.screenWidth/2-(gp.tileSize*2)/2;
-        y += gp.tileSize*2;
-        g2.drawImage(gp.player.down1,x, y, gp.tileSize*2,gp.tileSize*2,null);
-
-        //NEW GAME
-        g2.setColor(new Color(3,4,94));
-        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
-        text="New Game";
-        x = getTextWidth(text);
-        y += gp.tileSize*3;
-        if(commandNum==0){
-            
-            g2.setColor(new Color(173,232,244));
-            g2.drawString("=>", x-gp.tileSize, y);
             g2.setColor(new Color(0,180,216));
-        }
-        g2.drawString(text, x, y);
+            g2.drawString(text, x+4, y+4);
+
+            g2.setColor(new Color(173,232,244));
+            g2.drawString(text, x, y);
+
+            //Mithras Trismegistus Image
+            x = gp.screenWidth/2-(gp.tileSize*2)/2;
+            y += gp.tileSize*2;
+            g2.drawImage(gp.player.down1,x, y, gp.tileSize*2,gp.tileSize*2,null);
+
+            //NEW GAME
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="New Game";
+            x = getTextWidth(text);
+            y += gp.tileSize*3;
+            if(commandNum==0){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+            
+
+            //LOAD GAME
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Load Game";
+            x = getTextWidth(text);
+            y += gp.tileSize;
+            if(commandNum==1){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
         
 
-        //LOAD GAME
-        g2.setColor(new Color(3,4,94));
-        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
-        text="Load Game";
-        x = getTextWidth(text);
-        y += gp.tileSize;
-        if(commandNum==1){
-            
-            g2.setColor(new Color(173,232,244));
-            g2.drawString("=>", x-gp.tileSize, y);
-            g2.setColor(new Color(0,180,216));
-        }
-        g2.drawString(text, x, y);
-      
+            //SETTINGS
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Settings";
+            x = getTextWidth(text);
+            y += gp.tileSize;
+            if(commandNum==2){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+        
 
-        //SETTINGS
-        g2.setColor(new Color(3,4,94));
-        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
-        text="Settings";
-        x = getTextWidth(text);
-        y += gp.tileSize;
-        if(commandNum==2){
-            
-            g2.setColor(new Color(173,232,244));
-            g2.drawString("=>", x-gp.tileSize, y);
-            g2.setColor(new Color(0,180,216));
+            //EXIT
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Exit";
+            x = getTextWidth(text);
+            y += gp.tileSize;
+            if(commandNum==3){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
         }
-        g2.drawString(text, x, y);
-       
+        else if(titleScreenState==1){
+            //Background
+            g2.setColor(new Color(0,0,0,(int) (alpha*255)));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+            //Title
+            g2.setColor(new Color(173,232,244));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,96F));
+            String text="Choose your Class";
+            int x = getTextWidth(text);
+            int y = gp.tileSize*3; 
+            g2.drawString(text, x, y);
 
-        //EXIT
-        g2.setColor(new Color(3,4,94));
-        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
-        text="Exit";
-        x = getTextWidth(text);
-        y += gp.tileSize;
-        if(commandNum==3){
+            //THIEF CLASS
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Thief";
+            x = getTextWidth(text);
+            y += gp.tileSize*3;
+            if(commandNum==0){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+
+            //MAGE CLASS
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Mage";
+            x = getTextWidth(text);
+            y += gp.tileSize;
+            if(commandNum==1){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+
+            //WARRIOR CLASS
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Warrior";
+            x = getTextWidth(text);
+            y += gp.tileSize;
+            if(commandNum==2){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+
+            //ELVE CLASS
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Elve";
+            x = getTextWidth(text);
+            y += gp.tileSize;
+            if(commandNum==3){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+
+            //Back to Menu button
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Back";
+            x = getTextWidth(text);
+            y += gp.tileSize*2;
+            if(commandNum==4){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
+
+
             
-            g2.setColor(new Color(173,232,244));
-            g2.drawString("=>", x-gp.tileSize, y);
-            g2.setColor(new Color(0,180,216));
         }
-        g2.drawString(text, x, y);
+
       
 
     }

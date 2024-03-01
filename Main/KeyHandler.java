@@ -33,32 +33,83 @@ public class KeyHandler implements KeyListener{
 
         //Title State
         if(gp.gameState==gp.titleState){
-            if(code==KeyEvent.VK_W){
-               gp.ui.commandNum--;
-               if(gp.ui.commandNum<0){
-                gp.ui.commandNum=3;
-               }
-            }
-            if(code==KeyEvent.VK_S){
-             gp.ui.commandNum++;
-             if(gp.ui.commandNum>3){
-                gp.ui.commandNum=0;
-             }
-            }
-            if(code==KeyEvent.VK_ENTER){
-                switch(gp.ui.commandNum){
-                    case 0:
-                    gp.gameState=gp.playState;
-                    gp.playMusic(6);
-                    break;
-                    case 1:
-                    break;
-                    case 2:
-                    break;
-                    case 3:
-                    System.exit(0);
+
+            switch(gp.ui.titleScreenState){
+
+               
+                case 0 : //MENU
+                if(code==KeyEvent.VK_W){
+                    gp.ui.commandNum--;
+                    if(gp.ui.commandNum<0){
+                        gp.ui.commandNum=3;
+                    }
                 }
+                if(code==KeyEvent.VK_S){
+                    gp.ui.commandNum++;
+                    if(gp.ui.commandNum>3){
+                        gp.ui.commandNum=0;
+                    }
+                }
+                if(code==KeyEvent.VK_ENTER){
+                    switch(gp.ui.commandNum){
+                        case 0:
+                        gp.ui.titleScreenState=1;
+
+                        break;
+                        case 1:
+                        break;
+                        case 2:
+                        break;
+                        case 3:
+                        System.exit(0);
+                    }
+                }
+                break;
+                case 1://CLASS SELECTION
+                if(code==KeyEvent.VK_W){
+                    gp.ui.commandNum--;
+                    if(gp.ui.commandNum<0){
+                        gp.ui.commandNum=4;
+                    }
+                }
+                if(code==KeyEvent.VK_S){
+                    gp.ui.commandNum++;
+                    if(gp.ui.commandNum>4){
+                        gp.ui.commandNum=0;
+                    }
+                }
+                if(code==KeyEvent.VK_ENTER){
+                    switch(gp.ui.commandNum){
+                        case 0:
+                        System.out.println("\n You chose the Thief Class");
+                        gp.gameState=gp.playState;
+                        gp.playMusic(6);
+                        break;
+                        case 1:
+                        System.out.println("\n You chose the Mage Class");
+                        gp.gameState=gp.playState;
+                        gp.playMusic(6);
+                        break;
+                        case 2:
+                        System.out.println("\n You chose the Warrior Class");
+                        gp.gameState=gp.playState;
+                        gp.playMusic(6);
+                        break;
+                        case 3:
+                        System.out.println("\n You chose the Elve Class");
+                        gp.gameState=gp.playState;
+                        gp.playMusic(6);
+                        break;
+                        case 4:
+                        gp.ui.titleScreenState=0;
+                        gp.ui.commandNum=0;
+                        break;
+                    }
+                }
+                break;
+
             }
+
 
         }
 
