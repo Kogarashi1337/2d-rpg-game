@@ -5,6 +5,7 @@ import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 public class Sound {
     Clip clip;
@@ -20,6 +21,7 @@ public class Sound {
         soundURL[5]=getClass().getResource("/sound/coin.wav");
         soundURL[6]=getClass().getResource("/sound/bba.wav");
         soundURL[7]=getClass().getResource("/sound/lonely_cornfield.wav");
+        soundURL[8]=getClass().getResource("/sound/title_0.wav");
     }
 
     public void setFile(int i){
@@ -40,5 +42,8 @@ public class Sound {
     public void stop(){
         clip.stop();
     }
-
+    public void setVolume(float v){
+        FloatControl gainControl= (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(v);
+    }
 }

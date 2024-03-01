@@ -33,11 +33,12 @@ public class KeyHandler implements KeyListener{
 
         //Title State
         if(gp.gameState==gp.titleState){
-
+            
             switch(gp.ui.titleScreenState){
 
                
                 case 0 : //MENU
+                
                 if(code==KeyEvent.VK_W){
                     gp.ui.commandNum--;
                     if(gp.ui.commandNum<0){
