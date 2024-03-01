@@ -167,7 +167,7 @@ public class UI {
 
     public void drawTitleScreen(){
         
-        g2.setColor(new Color(3,4,94,(int) (alpha*100)));
+        g2.setColor(new Color(3,4,94,(int) (alpha*160)));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
         if(pauseAnim==false){
@@ -199,6 +199,12 @@ public class UI {
 
         g2.setColor(new Color(173,232,244));
         g2.drawString(text, x, y);
+
+        //Mithras Trismegistus Image
+
+        x = gp.screenWidth/2-(gp.tileSize*2)/2;
+        y += gp.tileSize*2;
+        g2.drawImage(gp.player.down1,x, y, gp.tileSize*2,gp.tileSize*2,null);
     }
 
     public void drawPauseScreen(){
