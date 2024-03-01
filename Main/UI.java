@@ -201,10 +201,38 @@ public class UI {
         g2.drawString(text, x, y);
 
         //Mithras Trismegistus Image
-
         x = gp.screenWidth/2-(gp.tileSize*2)/2;
         y += gp.tileSize*2;
         g2.drawImage(gp.player.down1,x, y, gp.tileSize*2,gp.tileSize*2,null);
+
+        //NEW GAME
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+        text="New Game";
+        x = getTextWidth(text);
+        y += gp.tileSize*3;
+        g2.drawString(text, x, y);
+
+        //LOAD GAME
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+        text="Load Game";
+        x = getTextWidth(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+
+        //SETTINGS
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+        text="Settings";
+        x = getTextWidth(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+
+        //EXIT
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+        text="Exit";
+        x = getTextWidth(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+
     }
 
     public void drawPauseScreen(){
