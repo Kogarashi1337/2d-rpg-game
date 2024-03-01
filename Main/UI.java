@@ -29,6 +29,7 @@ public class UI {
     public String pauseMessage="";
     public String currentDialogue="";
 
+    public int commandNum=0;
     public int msgCtr;
     public int msgX;
     public int msgY;
@@ -45,6 +46,7 @@ public class UI {
         arial_80= new Font("Arial", Font.BOLD, 35);
         arial_100= new Font("Arial", Font.BOLD, 100);
         alpha=1.0f;
+       
 
         try {
             InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
@@ -167,7 +169,7 @@ public class UI {
 
     public void drawTitleScreen(){
         
-        g2.setColor(new Color(3,4,94,(int) (alpha*160)));
+        g2.setColor(new Color(3,4,94,(int) (alpha*200)));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
         if(pauseAnim==false){
@@ -206,32 +208,64 @@ public class UI {
         g2.drawImage(gp.player.down1,x, y, gp.tileSize*2,gp.tileSize*2,null);
 
         //NEW GAME
+        g2.setColor(new Color(3,4,94));
         g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
         text="New Game";
         x = getTextWidth(text);
         y += gp.tileSize*3;
+        if(commandNum==0){
+            
+            g2.setColor(new Color(173,232,244));
+            g2.drawString("=>", x-gp.tileSize, y);
+            g2.setColor(new Color(0,180,216));
+        }
         g2.drawString(text, x, y);
+        
 
         //LOAD GAME
+        g2.setColor(new Color(3,4,94));
         g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
         text="Load Game";
         x = getTextWidth(text);
         y += gp.tileSize;
+        if(commandNum==1){
+            
+            g2.setColor(new Color(173,232,244));
+            g2.drawString("=>", x-gp.tileSize, y);
+            g2.setColor(new Color(0,180,216));
+        }
         g2.drawString(text, x, y);
+      
 
         //SETTINGS
+        g2.setColor(new Color(3,4,94));
         g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
         text="Settings";
         x = getTextWidth(text);
         y += gp.tileSize;
+        if(commandNum==2){
+            
+            g2.setColor(new Color(173,232,244));
+            g2.drawString("=>", x-gp.tileSize, y);
+            g2.setColor(new Color(0,180,216));
+        }
         g2.drawString(text, x, y);
+       
 
         //EXIT
+        g2.setColor(new Color(3,4,94));
         g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
         text="Exit";
         x = getTextWidth(text);
         y += gp.tileSize;
+        if(commandNum==3){
+            
+            g2.setColor(new Color(173,232,244));
+            g2.drawString("=>", x-gp.tileSize, y);
+            g2.setColor(new Color(0,180,216));
+        }
         g2.drawString(text, x, y);
+      
 
     }
 
