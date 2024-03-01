@@ -3,8 +3,11 @@ package Main;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.io.IOException;
 // import java.awt.image.BufferedImage;
+import java.io.InputStream;
 
 import Entity.Player;
 
@@ -16,6 +19,7 @@ public class UI {
     Font arial_80;
     Font arial_100;
     Font arial_60;
+    Font maruMonica;
     //BufferedImage[] itemImage;
 
     public boolean messageOn = false;
@@ -40,6 +44,19 @@ public class UI {
         arial_60= new Font("Arial", Font.BOLD, 20);
         arial_80= new Font("Arial", Font.BOLD, 35);
         arial_100= new Font("Arial", Font.BOLD, 100);
+
+
+        try {
+            InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
+            maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
         this.pl=pl;
         this.gp = gp;
         this.imgN = 5;
@@ -56,6 +73,8 @@ public class UI {
             return arial_100;
             case 4:
             return arial_60;
+            case 5:
+            return maruMonica;
             default:
             return this.arial_40;
         }
@@ -197,7 +216,7 @@ public class UI {
 
         drawSubWindow(x, y, width, height);
 
-        g2.setFont(getFont(4));
+        g2.setFont(getFont(5).deriveFont(Font.PLAIN,32F));
         x +=gp.tileSize;
         y +=gp.tileSize;
         //String text = "Hello, my name is "+gp.npc[i].name();
