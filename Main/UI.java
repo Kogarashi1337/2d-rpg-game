@@ -44,7 +44,7 @@ public class UI {
         arial_60= new Font("Arial", Font.BOLD, 20);
         arial_80= new Font("Arial", Font.BOLD, 35);
         arial_100= new Font("Arial", Font.BOLD, 100);
-
+        alpha=1.0f;
 
         try {
             InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
@@ -166,10 +166,38 @@ public class UI {
     }
 
     public void drawTitleScreen(){
-        g2.setFont(getFont(5).deriveFont(Font.PLAIN,32F));
+        
+        g2.setColor(new Color(3,4,94,(int) (alpha*100)));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        if(pauseAnim==false){
+          alpha=alpha-(alpha/60);  
+        }
+          if(pauseAnim){
+            alpha=alpha+(alpha/60);
+        }
+
+        msgCtr++;
+
+        if(msgCtr>100){
+            if(pauseAnim){
+                pauseAnim=false;
+            }
+            else{
+                pauseAnim=true;
+            }
+            msgCtr=0;
+        }
+
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,96F));
         String text = "Lost Estharia";
         int x = getTextWidth(text);
-        int y = gp.screenHeight/2;
+        int y = gp.tileSize*3;
+
+        g2.setColor(new Color(0,180,216));
+        g2.drawString(text, x+4, y+4);
+
+        g2.setColor(new Color(173,232,244));
         g2.drawString(text, x, y);
     }
 
