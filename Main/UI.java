@@ -352,7 +352,33 @@ public class UI {
                 g2.setColor(new Color(0,180,216));
             }
             g2.drawString(text, x, y);
+            
+        }
+        else if(titleScreenState==2){
+            //Background
+            g2.setColor(new Color(0,0,0,(int) (alpha*255)));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+            //Title
+            g2.setColor(new Color(173,232,244));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,96F));
+            String text="Game Settings";
+            int x = getTextWidth(text);
+            int y = gp.tileSize*3; 
+            g2.drawString(text, x, y);
 
+            //THIEF CLASS
+            g2.setColor(new Color(3,4,94));
+            g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+            text="Thief";
+            x = getTextWidth(text);
+            y += gp.tileSize*3;
+            if(commandNum==0){
+                
+                g2.setColor(new Color(173,232,244));
+                g2.drawString("=>", x-gp.tileSize, y);
+                g2.setColor(new Color(0,180,216));
+            }
+            g2.drawString(text, x, y);
 
             
         }
