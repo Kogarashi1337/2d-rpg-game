@@ -18,7 +18,8 @@ public class OBJ_Key extends SuperObject{
                 
                 image=ImageIO.read(getClass().getResourceAsStream("/Objects/Key.png"));
                 uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-            } catch (IOException e) {
+            } 
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
