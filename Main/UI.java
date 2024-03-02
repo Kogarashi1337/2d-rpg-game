@@ -5,16 +5,23 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 // import java.awt.image.BufferedImage;
 import java.io.InputStream;
 
 import Entity.Player;
+import object.OBJ_Heart;
+import object.SuperObject;
 
 public class UI {
     Player pl;
     GamePanel gp;
     Graphics2D g2;
+
+    //HUD
+    BufferedImage heart_full,heart_half,heart_zero;
+
     Font arial_40;
     Font arial_80;
     Font arial_100;
@@ -51,6 +58,7 @@ public class UI {
         alpha=1.0f;
        
 
+
         try {
             InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
             maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -61,6 +69,14 @@ public class UI {
 
             e.printStackTrace();
         }
+
+        //HUD/object stuff
+        SuperObject heart=new OBJ_Heart(gp);
+        heart_full=heart.image;
+        heart_half=heart.image2;
+        heart_zero=heart.image3;
+
+
 
         this.pl=pl;
         this.gp = gp;
@@ -150,12 +166,14 @@ public class UI {
         if (gp.gameState==gp.playState){
           // pMessageOn=false;
           // msgCtr=0;
+          drawPlayerLife();
         }
 
         //DIALOGUE
         if(gp.gameState==gp.dialogueState)
         {   
           //  pMessageOn=false;
+            drawPlayerLife();
             drawDialogueScreen();
         }
 
@@ -163,11 +181,43 @@ public class UI {
         if (gp.gameState==gp.pauseState){
             
             //  pMessageOn=true;
+            drawPlayerLife();
           drawPauseScreen();  
         }
 
       //  g2.drawString("SKey = "+gp.player.hasSKey, 0, 14*gp.tileSize);//silv
         //g2.drawString("GKey = "+gp.player.hasGoldKey, 0, 13*gp.tileSize);//gold
+    }
+
+    //HUD STUFF
+    public void drawPlayerLife(){
+
+        int x = gp.tileSize/2;
+        int y = gp.tileSize/2;
+
+        //Drawing the empty hearts first
+        int i=0;
+        while(i<gp.player.maxLife/2){
+            g2.drawImage(heart_zero,x,y, null);
+            i++;
+            x+=gp.tileSize;
+        }
+        //Drawing half+full hearts
+        x = gp.tileSize/2;
+        y = gp.tileSize/2;
+        i=0;
+        while(i<gp.player.life){
+            //drawing half heart per 1 life tick (2 life ticks=1full heart)
+            g2.drawImage(heart_half,x,y, null);
+            i++;
+            if(i<gp.player.life){
+             //drawing full heart if there is a second tick to fill
+             g2.drawImage(heart_full,x,y, null);    
+             i++;
+            }
+            
+            x+=gp.tileSize;
+        }
     }
 
     public void drawTitleScreen(){
@@ -465,6 +515,8 @@ public class UI {
       
 
     }
+
+
 
     public void drawPauseScreen(){
         g2.setFont(getFont(2));

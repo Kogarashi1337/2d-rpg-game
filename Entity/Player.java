@@ -90,11 +90,19 @@ public class Player extends Entity {
                     xu1=up1;
                     xu2=up2;
     }
+
+
+
+
     public void setdefaultValues(){
         this.worldX = gp.tileSize*39;
         this.worldY = gp.tileSize*29;
         this.speed=4;
         direction="down";
+
+        //PLAYER STATUS
+        maxLife=10;
+        life=maxLife;
     }
 
 

@@ -28,6 +28,12 @@ public class Entity {
     public Rectangle solidArea=new Rectangle(0,0,48,48);
     public int solidAreaDefaultX,solidAreaDefaultY;
     public boolean collisionOn=true;
+
+    //CHARACTER STATUS
+    public int maxLife;
+    public int life;
+
+
     GamePanel gp;
 
 
