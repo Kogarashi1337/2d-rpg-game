@@ -1,10 +1,9 @@
 package Main;
-import java.awt.RenderingHints.Key;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import Entity.Entity;
-import Entity.NPC_OldMan;
+
 
 public class KeyHandler implements KeyListener{
     public boolean upPressed,downPressed,rightPressed,leftPressed,equipPressed,radioPressedR,radioPressedL,enterPressed;
@@ -142,19 +141,44 @@ public class KeyHandler implements KeyListener{
                         break;
                     }
                 }
-                if(configure){
+                while(configure){
                     if(code==KeyEvent.VK_D){
+                        
+                        if(gp.ui.volumeLevel<-60){
 
+                            gp.music.play();
+                            gp.ui.volumeLevel=-60;
+                            gp.music.setVolume((gp.ui.volumeLevel)/10f);
+
+                        } 
+                        else{
                         gp.ui.volumeLevel+=10;
-                        sl=(float) (gp.ui.volumeLevel*6)/10;
-                        gp.music.setVolume(sl);
+                        gp.music.setVolume((gp.ui.volumeLevel)/10f);
+                        }
+                        if(gp.ui.volumeLevel>30){
+                         gp.ui.volumeLevel=30;
+                          
+                        }
+
+                        
                     }
                     if(code==KeyEvent.VK_A){
 
-                        gp.ui.volumeLevel-=10;
-                        sl=(float) (gp.ui.volumeLevel*6)/10;
-                        gp.music.setVolume(sl);
+                       
+                        if(gp.ui.volumeLevel==-60){
+                            gp.ui.volumeLevel=-70;
+                            gp.music.stop();
+                            
+                        }
+                        else{
+                            gp.ui.volumeLevel-=10;
+                            gp.music.setVolume((gp.ui.volumeLevel)/10f);
+                             
+                        }
+ 
+                        
                     }
+                    break;
                 }
                 
                 break;

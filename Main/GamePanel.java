@@ -124,7 +124,7 @@ public class GamePanel extends JPanel implements Runnable{
     //             nextDrawTime+=drawInterval;
             
     //         } catch (InterruptedException e) {
-    //             // TODO Auto-generated catch block
+    //            
     //             e.printStackTrace();
     //         }
     //      }
@@ -138,7 +138,7 @@ public class GamePanel extends JPanel implements Runnable{
             long lastTime=System.nanoTime();
             long currentTime;
             long timer=0;
-            int count=0;
+           // int count=0;
 
 
             while (gameThread != null){
@@ -154,11 +154,11 @@ public class GamePanel extends JPanel implements Runnable{
                     repaint(); 
                    
                     delta--;  
-                    count++;
+                   // count++;
                 }
                 if(timer>=1000000000){
                   // System.out.println("FPS: "+count);
-                    count=0;
+                  //  count=0;
                     timer=0;
                 }
                 

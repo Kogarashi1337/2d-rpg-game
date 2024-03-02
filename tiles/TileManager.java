@@ -233,7 +233,7 @@ public class TileManager {
        
         int worldCol=0;
         int worldRow=0;
-        double nMoves=0;
+       // double nMoves=0;
         while(worldCol<gp.maxWorldCol && worldRow<gp.maxWorldRow){
            
            // g2.drawImage(tile[0].image,x ,y , gp.tileSize,gp.tileSize,null);

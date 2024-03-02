@@ -3,13 +3,13 @@ package Entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
+
+
 
 import Main.GamePanel;
 import Main.KeyHandler;
-import Main.UtilityTool;
+
 // import object.OBJ_Boots;
 // import object.OBJ_GoldKey;
 

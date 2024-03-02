@@ -437,6 +437,9 @@ public class UI {
                 volm="||||||||||";
                 g2.setColor(new Color(0,180,216));
                 break;
+                default:
+                g2.setColor(new Color(3,4,94));
+                break;
                 // g2.setColor(new Color(173,232,244));
                 // g2.drawString("=>", x-gp.tileSize, y);
             }
