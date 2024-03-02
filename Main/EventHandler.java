@@ -22,8 +22,12 @@ public class EventHandler {
 
     }
     public void checkEvent(){
+        //event happens
 
+
+        if(hit(25,25,"down")==true){damagePit(gp.dialogueState);}
     }
+    //EVENT COLLISION CHECK
     public boolean hit(int eventCol,int eventRow, String reqDirection){
         boolean hit=false;
         gp.player.solidArea.x=gp.player.worldX + gp.player.solidArea.x;
@@ -40,8 +44,14 @@ public class EventHandler {
         gp.player.solidArea.y=gp.player.solidAreaDefaultY;
         eventRect.x = eventRectDefaultX;
         eventRect.y = eventRectDefaultY;
-        
+
         return hit;
+    }
+    //EVENTS
+    public void damagePit(int gameState){
+        gp.gameState=gameState;
+        gp.ui.currentDialogue = "You fall into a pit!!";
+        gp.player.life-=1;
     }
 
 }
