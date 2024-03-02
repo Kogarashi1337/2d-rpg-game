@@ -65,7 +65,7 @@ public class Entity {
                 gp.player.maxLife=8;
                 
                 break;
-            default:
+                default:
                 break;
         }
         life=maxLife;
