@@ -86,24 +86,29 @@ public class KeyHandler implements KeyListener{
                     switch(gp.ui.commandNum){
                         case 0:
                         System.out.println("\n You chose the Thief Class");
+                       
                         gp.stopMusic();
                         gp.gameState=gp.playState;
+                         gp.player.classHealth("Thief");
                         gp.playMusic(6);
                         break;
                         case 1:
                         System.out.println("\n You chose the Mage Class");
+                        gp.player.classHealth("Mage");
                         gp.stopMusic();
                         gp.gameState=gp.playState;
                         gp.playMusic(6);
                         break;
                         case 2:
                         System.out.println("\n You chose the Warrior Class");
+                        gp.player.classHealth("Warrior");
                         gp.stopMusic();
                         gp.gameState=gp.playState;
                         gp.playMusic(6);
                         break;
                         case 3:
                         System.out.println("\n You chose the Elve Class");
+                        gp.player.classHealth("Elve");
                         gp.stopMusic();
                         gp.gameState=gp.playState;
                         gp.playMusic(6);
