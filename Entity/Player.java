@@ -17,7 +17,7 @@ public class Player extends Entity {
  
  
     KeyHandler keyH;
-
+    private long lastHeal;
     public final int screenX;
     public final int screenY;
 
@@ -40,7 +40,7 @@ public class Player extends Entity {
     public Player(GamePanel gp,KeyHandler keyH){
         
         super(gp);
-
+        lastHeal=0;
 
         this.keyH = keyH;
     
@@ -57,6 +57,12 @@ public class Player extends Entity {
 
         setdefaultValues();
         getPlayerImage();
+    }
+    public long getLastHeal(){
+        return lastHeal;
+    }
+    public void setLastHeal(long lastHeal){
+        this.lastHeal=lastHeal;
     }
 
     public void getPlayerImage(){

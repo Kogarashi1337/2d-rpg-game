@@ -36,8 +36,8 @@ public class EventHandler {
     public void checkEvent(){
         //event happens
         //if(hit(17,24,"any")==true){changeMap(gp.dialogueState);}
-        if(hit(25,23,"down")==true){healingPool(gp.dialogueState);}
-        if(hit(25,25,"down")==true){damagePit(gp.dialogueState);}
+        if(hit(25,23,"down")==true){healingPool(25,23,gp.dialogueState,gp.player.getLastHeal());}
+        if(hit(25,25,"down")==true){damagePit(25,25,gp.dialogueState);}
     }
     //EVENT COLLISION CHECK
     public boolean hit(int col,int row, String reqDirection){
@@ -47,7 +47,7 @@ public class EventHandler {
         eventRect[col][row].x=col*gp.tileSize+eventRect[col][row].x;
         eventRect[col][row].y=row*gp.tileSize+eventRect[col][row].y;
 
-        if(gp.player.solidArea.intersects(eventRect[col][row])){
+        if(gp.player.solidArea.intersects(eventRect[col][row]) && eventRect[col][row].eventDone==false){
             if(gp.player.direction.contentEquals(reqDirection)||reqDirection.equals("any")){
                 hit=true;
             }
@@ -60,17 +60,27 @@ public class EventHandler {
         return hit;
     }
     //EVENTS
-    public void damagePit(int gameState){
+    public void damagePit(int col, int row, int gameState){
         gp.gameState=gameState;
         gp.ui.currentDialogue = "You fall into a pit!!";
         gp.player.life-=1;
+        eventRect[col][row].eventDone=true;
     }
-    public void healingPool(int gameState){
+    public void healingPool(int col, int row, int gameState, long lastHeal){
         if(gp.keyH.enterPressed==true){
+            long cooldown=10000;
             gp.gameState=gameState;
+            
+            long healTime= System.currentTimeMillis();
+            if(healTime- lastHeal >= cooldown){
             gp.ui.currentDialogue="You drank some holy water!\n You have recovered!";
             gp.player.life=gp.player.maxLife;
+            gp.player.setLastHeal(healTime);    
+            }else{
+                gp.ui.currentDialogue="You need to wait "+ (cooldown-(healTime-lastHeal))/1000+"sec ";
+            }
         }
+
     }
     public void changeMap(int gameState){
         
