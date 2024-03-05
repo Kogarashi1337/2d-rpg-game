@@ -48,7 +48,7 @@ public class Player extends Entity {
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
         solidArea = new Rectangle();
-        solidArea.x=10;//8
+        solidArea.x=8;//8
         solidArea.y=16;//16
         solidAreaDefaultX=solidArea.x;
         solidAreaDefaultY=solidArea.y;
@@ -219,6 +219,7 @@ public class Player extends Entity {
             interactNPC(npcIndex);
             //CHECK EVENT
             gp.eHandler.checkEvent();
+            gp.keyH.enterPressed=false;
 
             //if collision is false , player can move
             if(collisionOn==false){
@@ -365,19 +366,19 @@ public class Player extends Entity {
            
             
         }
-        gp.keyH.enterPressed=false;
+        
     }
     
     //TIMER BETWEEN COLLISION INTERACTIONS
-    public void setDialogueTimer(){
-        int i;
-        for(i=0;i<1200;i++){
-            System.out.println("Chat timer countdown: "+(1200-i));
+    // public void setDialogueTimer(){
+    //     int i;
+    //     for(i=0;i<1200;i++){
+    //         System.out.println("Chat timer countdown: "+(1200-i));
           
           
-        }
+    //     }
 
-    }
+    // }
 
     public void draw(Graphics2D g2){
         // g2.setColor(Color.red);

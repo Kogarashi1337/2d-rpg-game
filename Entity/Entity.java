@@ -54,13 +54,15 @@ public class Entity {
             case "Thief":
                 gp.player.maxLife=4;
                 break;
+
                 case "Mage":
                 gp.player.maxLife=6;
                 break;
+
                 case "Warrior":
                 gp.player.maxLife=10;
-                
                 break;
+                
                 case "Elve":
                 gp.player.maxLife=8;
                 

@@ -221,10 +221,11 @@ public class UI {
     }
 
     public void drawTitleScreen(){
+
+
+        //TITLE MENU TAB
         if(titleScreenState==0){
-
-
-        //MENU SCREEN
+            //MENU SCREEN
             g2.setColor(new Color(3,4,94,(int) (alpha*200)));
             g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
@@ -322,6 +323,7 @@ public class UI {
             }
             g2.drawString(text, x, y);
         }
+        //CLASS TAB
         else if(titleScreenState==1){
             //Background
             g2.setColor(new Color(0,0,0,(int) (alpha*255)));
@@ -405,6 +407,7 @@ public class UI {
             g2.drawString(text, x, y);
             
         }
+        //SETTINGS TAB
         else if(titleScreenState==2){
             //Background
             g2.setColor(new Color(0,0,0,(int) (alpha*255)));
