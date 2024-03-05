@@ -17,9 +17,14 @@ public class Entity {
     public int dialogueIndex=0;
     public boolean movementOn=false;
     public String name;
+
+    //moved from superobj
+    public BufferedImage image, image2, image3;
+
+    public boolean collision = false;
     
-    public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2,down1b,down2b,left1b,left2b,right1b,right2b,up1b,up2b, xu1,xu2,xd1,xd2,xl1,xl2,xr1,xr2;
-    public String direction;
+    public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2,down1b,down2b,left1b,left2b,right1b,right2b,up1b,up2b, xu1,xu2,xd1,xd2,xl1,xl2,xr1,xr2,obj1;
+    public String direction = "down";
     String dialogues[]=new String[20];
 
     public int numMoves=0;//sprite Counter
@@ -110,7 +115,7 @@ public class Entity {
         gp.cChecker.checkPlayer(this);
 
         //if collision is false , player can move
-       if(collisionOn==false){
+      if(collisionOn==false){
 
             switch(direction){
                 case"up":  worldY-=speed;break;
@@ -150,41 +155,78 @@ public class Entity {
           
             switch(direction){
 
+                    // case "up": 
+                    // if((moveType==1)&&(collisionOn==false)){
+                    // image=up1;
+                    // }else{
+                    // image=up2;
+                    // }
+                    // break;
+        
+                    // case "down":if((moveType==1)&&(collisionOn==false)){
+                    // image=down1;
+                    // }else{
+                    // image=down2;
+                    // }
+                    // break;
+        
+                    // case "left": if((moveType==1)&&(collisionOn==false)){
+                    // image=left1;
+                    // }else{
+                    // image=left2;
+                    // }
+                    // break;
+                    
+                    // case "right": if((moveType==1)&&(collisionOn==false)){
+                    // image=right1;
+                    // }else{
+                    // image=right2;
+                    // }
+                    // break;
+
                     case "up": 
-                    if((moveType==1)&&(collisionOn==false)){
+                    if((moveType==1)){
                     image=up1;
                     }else{
                     image=up2;
                     }
                     break;
         
-                    case "down":if((moveType==1)&&(collisionOn==false)){
+                    case "down":if((moveType==1)){
                     image=down1;
-                    }else{
+                    }
+                    // else if(moveType==0){
+                    //     image=obj1;
+                    // }
+                    else{
                     image=down2;
                     }
                     break;
         
-                    case "left": if((moveType==1)&&(collisionOn==false)){
+                    case "left": if((moveType==1)){
                     image=left1;
                     }else{
                     image=left2;
                     }
                     break;
                     
-                    case "right": if((moveType==1)&&(collisionOn==false)){
+                    case "right": if((moveType==1)){
                     image=right1;
                     }else{
                     image=right2;
                     }
                     break;
+                    default:
+                    image=down1;
             }         
            
             
                 
                
     
-            g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize,null);
+           g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize,null);
+
+           // g2.drawImage(obj1, screenX, screenY,gp.tileSize,gp.tileSize,null);
         }
     }
 

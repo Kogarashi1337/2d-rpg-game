@@ -1,25 +1,17 @@
 package object;
 
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+import Entity.Entity;
 import Main.GamePanel;
 
-public class OBJ_SChest extends SuperObject{
-        GamePanel gp;
+public class OBJ_SChest extends Entity{
+
 
         public OBJ_SChest(GamePanel gp){
 
-            this.gp=gp;
+            super(gp);
             name="Silver Chest";
+            image = setup("/Objects/Chest_s");
 
-            try {
-                image=ImageIO.read(getClass().getResourceAsStream("/Objects/Chest_s.png"));
-                uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             collision=true;
 
         }

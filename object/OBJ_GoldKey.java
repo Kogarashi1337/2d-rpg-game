@@ -1,24 +1,18 @@
 package object;
 
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
+import Entity.Entity;
 import Main.GamePanel;
 
-public class OBJ_GoldKey extends SuperObject{
-    GamePanel gp;
-
+public class OBJ_GoldKey extends Entity{
+   
+    
     public  OBJ_GoldKey(GamePanel gp){
 
-        this.gp=gp;
+        super(gp);
         name="Gold Key";
-        try {
-            image=ImageIO.read(getClass().getResourceAsStream("/Objects/Key_Gold.png"));
-            uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
+        
+        down1 = setup("/Objects/Key_Gold");
     }
 
 }

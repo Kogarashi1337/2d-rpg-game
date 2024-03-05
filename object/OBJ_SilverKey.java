@@ -1,24 +1,15 @@
 package object;
 
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+import Entity.Entity;
 import Main.GamePanel;
 
-public class OBJ_SilverKey extends SuperObject{
-        GamePanel gp;
+public class OBJ_SilverKey extends Entity{
+ 
 
     public OBJ_SilverKey(GamePanel gp){
 
-        this.gp=gp;
+        super(gp);
         name="Silver Key";
-        try {
-            image=ImageIO.read(getClass().getResourceAsStream("/Objects/Key_Silver.png"));
-            uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
+        image = setup("/Objects/Key_Silver");
     }
 }
