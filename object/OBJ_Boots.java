@@ -13,7 +13,7 @@ public class OBJ_Boots extends Entity{
         super(gp);
 
         name="Purple Boots";
-        down1 = setup("/Objects/item_boot1");
+        up1 = up2 = left1 = left2 = right1 = right2 = down1 = down2 = setup("/Objects/item_boot1");
     }
     
 }

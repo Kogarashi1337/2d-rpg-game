@@ -155,74 +155,84 @@ public class Entity {
           
             switch(direction){
 
-                    // case "up": 
-                    // if((moveType==1)&&(collisionOn==false)){
-                    // image=up1;
-                    // }else{
-                    // image=up2;
-                    // }
-                    // break;
-        
-                    // case "down":if((moveType==1)&&(collisionOn==false)){
-                    // image=down1;
-                    // }else{
-                    // image=down2;
-                    // }
-                    // break;
-        
-                    // case "left": if((moveType==1)&&(collisionOn==false)){
-                    // image=left1;
-                    // }else{
-                    // image=left2;
-                    // }
-                    // break;
-                    
-                    // case "right": if((moveType==1)&&(collisionOn==false)){
-                    // image=right1;
-                    // }else{
-                    // image=right2;
-                    // }
-                    // break;
-
                     case "up": 
-                    if((moveType==1)){
+                    if((moveType==1)&&(collisionOn==false)){
                     image=up1;
                     }else{
                     image=up2;
                     }
                     break;
         
-                    case "down":if((moveType==1)){
+                    case "down":if((moveType==1)&&(collisionOn==false)){
                     image=down1;
-                    }
-                    // else if(moveType==0){
-                    //     image=obj1;
-                    // }
-                    else{
+                    }else{
                     image=down2;
                     }
                     break;
         
-                    case "left": if((moveType==1)){
+                    case "left": if((moveType==1)&&(collisionOn==false)){
                     image=left1;
                     }else{
                     image=left2;
                     }
                     break;
                     
-                    case "right": if((moveType==1)){
+                    case "right": if((moveType==1)&&(collisionOn==false)){
                     image=right1;
                     }else{
                     image=right2;
                     }
                     break;
-                    default:
-                    image=down1;
+
+                    // case "up": 
+                    // if((moveType==1)&&(collisionOn==false)){
+                    // image=up1;
+                    // }
+                    // else if((collisionOn==true)){
+                    //     image=down1;
+                    // }
+                    // else{
+                    // image=up2;
+                    // }
+                    // break;
+        
+                    // case "down":if((moveType==1)&&(collisionOn==false)){
+                    // image=down1;
+                    // }else if((collisionOn==true)){
+                    // image=down1;
+                    // }
+                    // else{
+                    // image=down2;
+                    // }
+                    // break;
+        
+                    // case "left": if((moveType==1)&&(collisionOn==false)){
+                    // image=left1;
+                    // }
+                    // else if((collisionOn==true)){
+                    //     image=down1;
+                    // }
+                    // else{
+                    // image=left2;
+                    // }
+                    // break;
+                    
+                    // case "right": if((moveType==1)&&(collisionOn==false)){
+                    // image=right1;
+                    // }
+                    // else if((collisionOn==true)){
+                    //     image=down1;
+                    //     }
+                    // else{
+                    // image=right2;
+                    // }
+                    // break;
+                    // default:
+                    
+                    // image=down1;  
+
             }         
-           
-            
-                
-               
+                  
     
            g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize,null);
 

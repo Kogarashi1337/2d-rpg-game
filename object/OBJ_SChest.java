@@ -10,7 +10,7 @@ public class OBJ_SChest extends Entity{
 
             super(gp);
             name="Silver Chest";
-            image = setup("/Objects/Chest_s");
+            up1 = up2 = left1 = left2 = right1 = right2 = down1 = down2 = setup("/Objects/Chest_s");
 
             collision=true;
 

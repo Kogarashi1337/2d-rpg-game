@@ -10,7 +10,7 @@ public class OBJ_Key extends Entity{
             super(gp);
             
             name ="Door Key";
-            down1= setup("/Objects/Key");
+            up1 = up2 = left1 = left2 = right1 = right2 = down1 = down2 = setup("/Objects/Key");
 
         }
 

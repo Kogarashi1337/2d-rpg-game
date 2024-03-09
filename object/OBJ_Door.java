@@ -17,7 +17,7 @@ public class OBJ_Door extends Entity{
         solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        down1 = setup("/Objects/Door_1");
-      //  update();
+        up1 = up2 = left1 = left2 = right1 = right2 = down1 = down2 = setup("/Objects/Door_1");
+
     }
 }

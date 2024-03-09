@@ -10,6 +10,6 @@ public class OBJ_SilverKey extends Entity{
 
         super(gp);
         name="Silver Key";
-        image = setup("/Objects/Key_Silver");
+        up1 = up2 = left1 = left2 = right1 = right2 = down1 = down2 = setup("/Objects/Key_Silver");
     }
 }

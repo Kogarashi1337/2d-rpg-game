@@ -111,7 +111,14 @@ public class AssetSetter {
         gp.npc[0].worldX=gp.tileSize*25;
         gp.npc[0].worldY=gp.tileSize*23;
         
-
+        gp.npc[1]=new NPC_OldMan(gp,"Saruman");
+        gp.npc[1].worldX=gp.tileSize*29;
+        gp.npc[1].worldY=gp.tileSize*20;
+        
+        gp.npc[2]=new NPC_OldMan(gp,"Gandalf");
+        gp.npc[2].worldX=gp.tileSize*17;
+        gp.npc[2].worldY=gp.tileSize*20;
+        
     }
 
 }
