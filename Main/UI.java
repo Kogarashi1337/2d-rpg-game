@@ -45,8 +45,8 @@ public class UI {
     public int volumeLevel=-10;
     public int titleScreenState = 0;// State 0 for menu | State 1 for class selection
 
-    public float alpha;
-    
+    public float alpha=1.0f;
+    public float beta=1.0f;
     
 
 
@@ -57,7 +57,7 @@ public class UI {
         arial_80= new Font("Arial", Font.BOLD, 35);
         arial_100= new Font("Arial", Font.BOLD, 100);
         alpha=1.0f;
-       
+        beta=1.0f;
 
 
         try {
@@ -125,7 +125,7 @@ public class UI {
         
         msgX=38;
         msgY=600;
-        alpha=1.0f;
+       // alpha=1.0f;
     }
     public void pauseMessage(String text){
         msgCtr=0;
@@ -134,7 +134,7 @@ public class UI {
         
         msgX=475;
         msgY=300;
-        alpha=1.0f;
+        //alpha=1.0f;
     }
     public void draw(Graphics2D g2){
         this.g2=g2;
@@ -227,7 +227,8 @@ public class UI {
         //TITLE MENU TAB
         if(titleScreenState==0){
             //MENU SCREEN
-            g2.setColor(new Color(3,4,94,(int) (alpha*200)));
+            
+            g2.setColor(new Color(3,4,94,(int) (alpha*100)));
             g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
             if(pauseAnim==false){
@@ -327,7 +328,7 @@ public class UI {
         //CLASS TAB
         else if(titleScreenState==1){
             //Background
-            g2.setColor(new Color(0,0,0,(int) (alpha*255)));
+            g2.setColor(new Color(0,0,0));
             g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
             //Title
             g2.setColor(new Color(173,232,244));
@@ -411,7 +412,7 @@ public class UI {
         //SETTINGS TAB
         else if(titleScreenState==2){
             //Background
-            g2.setColor(new Color(0,0,0,(int) (alpha*255)));
+            g2.setColor(new Color(0,0,0));
             g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
             //Title
             g2.setColor(new Color(173,232,244));
@@ -525,7 +526,7 @@ public class UI {
     public void drawPauseScreen(){
         
         //Background vignette
-        g2.setColor(new Color(0,0,0,(int) (alpha*55)));
+        g2.setColor(new Color(0,0,0,(int) (55.0f)));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
         

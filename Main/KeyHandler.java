@@ -246,11 +246,14 @@ public class KeyHandler implements KeyListener{
             if(code==KeyEvent.VK_ENTER){
                 switch(gp.ui.commandNum){
                     case 0:
+                   // gp.ui.pauseAnim=false;
+                    gp.ui.alpha=1.0f;
                     gp.gameState=gp.titleState;
                     gp.ui.titleScreenState=2;
                     gp.ui.commandNum=0;
                     break;
                     case 1:
+                    gp.ui.alpha=1.0f;
                     gp.gameState=gp.titleState;
                     gp.ui.titleScreenState=0;
                     break;
