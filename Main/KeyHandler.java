@@ -1,5 +1,6 @@
 package Main;
 
+import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -86,15 +87,16 @@ public class KeyHandler implements KeyListener{
                     switch(gp.ui.commandNum){
                         case 0:
                         System.out.println("\n You chose the Thief Class");
-                       
+                        gp.ui.commandNum=0;
                         gp.stopMusic();
                         gp.gameState=gp.playState;
-                         gp.player.classHealth("Thief");
+                        gp.player.classHealth("Thief");
                         gp.playMusic(6);
                         break;
                         case 1:
                         System.out.println("\n You chose the Mage Class");
                         gp.player.classHealth("Mage");
+                        gp.ui.commandNum=0;
                         gp.stopMusic();
                         gp.gameState=gp.playState;
                         gp.playMusic(6);
@@ -102,6 +104,7 @@ public class KeyHandler implements KeyListener{
                         case 2:
                         System.out.println("\n You chose the Warrior Class");
                         gp.player.classHealth("Warrior");
+                        gp.ui.commandNum=0;
                         gp.stopMusic();
                         gp.gameState=gp.playState;
                         gp.playMusic(6);
@@ -109,6 +112,7 @@ public class KeyHandler implements KeyListener{
                         case 3:
                         System.out.println("\n You chose the Elve Class");
                         gp.player.classHealth("Elve");
+                        gp.ui.commandNum=0;
                         gp.stopMusic();
                         gp.gameState=gp.playState;
                         gp.playMusic(6);
@@ -143,6 +147,7 @@ public class KeyHandler implements KeyListener{
                         break;
                         case 1:
                         gp.ui.titleScreenState=0;
+                        gp.ui.commandNum=0;
                         break;
                     }
                 }
@@ -222,14 +227,35 @@ public class KeyHandler implements KeyListener{
        
         //Pause state
         else if(gp.gameState==gp.pauseState){
+            
 
-            if(code==KeyEvent.VK_RIGHT){   
+            if(code==KeyEvent.VK_S){   
+                gp.ui.commandNum++;
                 // radioPressed 
+                if(gp.ui.commandNum>1){
+                    gp.ui.commandNum=0;
+                }
             }
-            if(code==KeyEvent.VK_LEFT){
-                // radioPressed
+            if(code==KeyEvent.VK_W){   
+                gp.ui.commandNum--;
+                // radioPressed 
+                if(gp.ui.commandNum<0){
+                    gp.ui.commandNum=1;
+                }
             }
-            //for ESC
+            if(code==KeyEvent.VK_ENTER){
+                switch(gp.ui.commandNum){
+                    case 0:
+                    gp.gameState=gp.titleState;
+                    gp.ui.titleScreenState=2;
+                    gp.ui.commandNum=0;
+                    break;
+                    case 1:
+                    gp.gameState=gp.titleState;
+                    gp.ui.titleScreenState=0;
+                    break;
+                }
+            }
             if(code==KeyEvent.VK_ESCAPE){
              
             }
@@ -284,6 +310,7 @@ public class KeyHandler implements KeyListener{
             if(code==KeyEvent.VK_ESCAPE){
 
                 gp.gameState = gp.pauseState;
+                gp.ui.commandNum=0;
                 gp.ui.pauseMessage("Game Paused");
                 
             }

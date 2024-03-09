@@ -253,10 +253,10 @@ public class UI {
             String text = "Lost Estharia";
             int x = getTextWidth(text);
             int y = gp.tileSize*3;
-
+            //title shadow
             g2.setColor(new Color(0,180,216));
             g2.drawString(text, x+4, y+4);
-
+            //title
             g2.setColor(new Color(173,232,244));
             g2.drawString(text, x, y);
 
@@ -523,36 +523,55 @@ public class UI {
 
 
     public void drawPauseScreen(){
-        g2.setFont(getFont(2));
-        String text = "PAUSED";
         
-        int x = getTextWidth(text);
-        int y = gp.screenHeight/2;
-          //  g2.setColor(new Color(255,255,255,(int) (alpha*255)));
-            g2.drawString(text, x, y);
-        
-            // if(pMessageOn){
-            //     if(pauseAnim==false){
-            //         alpha=alpha-(alpha/60);   
-            //     }
-            //     else{
-            //         alpha=alpha+(alpha/60);
-            //     }
-                   
-            //      msgCtr++;
+        //Background vignette
+        g2.setColor(new Color(0,0,0,(int) (alpha*55)));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
-            //     if(msgCtr>60){
-            //         if(pauseAnim){
-            //                pauseAnim=false;
-            //         }
-            //         else{
-            //                pauseAnim=true;
-            //         }
-                       
-            //         msgCtr=0;
-            //     }
-       
-            // }
+        
+
+        //GAME PAUSED TITLE SHADOW
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,66F));
+        g2.setColor(new Color(3,70,200));
+        String text = "Game Paused";
+        int x = getTextWidth(text);
+        int y = gp.screenHeight/8;
+        g2.drawString(text, x+5, y+5);
+        
+       //GAME PAUSED TITLE  
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,66F));
+        g2.setColor(new Color(3,140,240));
+        text = "Game Paused";
+        x = getTextWidth(text);
+        y = gp.screenHeight/8;
+        g2.drawString(text, x, y);
+
+        //SETTINGS
+        g2.setColor(new Color(3,4,94));
+        g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+        text="Settings";
+        x = getTextWidth(text);
+        y += gp.tileSize*3;
+        if(commandNum==0){
+            
+            g2.setColor(new Color(173,232,244));
+            g2.drawString("=>", x-gp.tileSize, y);
+            g2.setColor(new Color(0,180,216));
+        }
+        g2.drawString(text, x, y);
+
+       //Exit to MENU
+       g2.setColor(new Color(3,4,94));
+       g2.setFont(getFont(5).deriveFont(Font.BOLD,48F));
+       text="Exit to menu";
+       x = getTextWidth(text);
+       y += gp.tileSize;
+       if(commandNum==1){ 
+           g2.setColor(new Color(173,232,244));
+           g2.drawString("=>", x-gp.tileSize, y);
+           g2.setColor(new Color(0,180,216));
+       }
+       g2.drawString(text, x, y);
         
     }
 
