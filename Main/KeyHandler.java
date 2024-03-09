@@ -118,6 +118,8 @@ public class KeyHandler implements KeyListener{
                         gp.playMusic(6);
                         break;
                         case 4:
+                        gp.ui.alpha=1.0f;
+                        gp.ui.pauseAnim=false;
                         gp.ui.titleScreenState=0;
                         gp.ui.commandNum=0;
                         break;
@@ -146,6 +148,8 @@ public class KeyHandler implements KeyListener{
                        configure=true;
                         break;
                         case 1:
+                        gp.ui.alpha=1.0f;
+                        gp.ui.pauseAnim=false;
                         gp.ui.titleScreenState=0;
                         gp.ui.commandNum=0;
                         break;
@@ -247,13 +251,13 @@ public class KeyHandler implements KeyListener{
                 switch(gp.ui.commandNum){
                     case 0:
                    // gp.ui.pauseAnim=false;
-                    gp.ui.alpha=1.0f;
-                    gp.gameState=gp.titleState;
                     gp.ui.titleScreenState=2;
+                    gp.gameState=gp.titleState;
                     gp.ui.commandNum=0;
                     break;
                     case 1:
                     gp.ui.alpha=1.0f;
+                    gp.ui.pauseAnim=false;
                     gp.gameState=gp.titleState;
                     gp.ui.titleScreenState=0;
                     break;
