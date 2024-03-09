@@ -23,7 +23,7 @@ public class Entity {
 
     public boolean collision = false;
     
-    public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2,down1b,down2b,left1b,left2b,right1b,right2b,up1b,up2b, xu1,xu2,xd1,xd2,xl1,xl2,xr1,xr2,obj1;
+    public BufferedImage up1,up2,up3,up4,up5,up6,up7,up8,down1,down2,left1,left2,right1,right2,down1b,down2b,left1b,left2b,right1b,right2b,up1b,up2b, xu1,xu2,xd1,xd2,xl1,xl2,xr1,xr2,obj1;
     public String direction = "down";
     String dialogues[]=new String[20];
 
