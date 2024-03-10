@@ -206,7 +206,8 @@ public class Entity {
                 }
 
                 if(this.entityDNA.equals("monster")){
-                    switch(moveType){
+                   if(collisionOn==false){
+                     switch(moveType){
                         case 1:image=up1;break;
                         case 2:image=up2;break;
                         case 3:image=up3;break;
@@ -215,6 +216,19 @@ public class Entity {
                         case 6:image=up6;break;
                         case 7:image=up7;break;
                         case 8:image=up8;break;
+                    }
+                   }
+                    else if(collisionOn){
+                        switch(moveType){
+                        case 1:image=up1;break;
+                        case 2:image=up2;break;
+                        case 3:image=up1;break;
+                        case 4:image=up2;break;
+                        case 5:image=up1;break;
+                        case 6:image=up2;break;
+                        case 7:image=up1;break;
+                        case 8:image=up2;break;
+                        }
                     }
                 }
                     //END SLIME ONE
