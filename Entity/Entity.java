@@ -32,6 +32,7 @@ public class Entity {
     public int numMoves8=0;//sprite Counter
     public int moveType=1;//sprite Number
     public int animTime=120;//rate of change in direction
+    public int type;//0-player 1-npc 2-monster
  
     public Rectangle solidArea=new Rectangle(0,0,48,48);
     public int solidAreaDefaultX,solidAreaDefaultY;
@@ -40,6 +41,9 @@ public class Entity {
     //CHARACTER STATUS
     public int maxLife;
     public int life;
+    public boolean invincible=false;
+    public int invincibleCounter=0;
+    public float damageBlink=1.0f;
 
 
     GamePanel gp;
@@ -117,8 +121,15 @@ public class Entity {
         gp.cChecker.checkObject(this, false);
         gp.cChecker.checkEntity(this, gp.npc);
         gp.cChecker.checkEntity(this, gp.monster);
-        gp.cChecker.checkPlayer(this);
+        boolean contactPlayer= gp.cChecker.checkPlayer(this);
 
+        if((this.type == 2)&&(contactPlayer == true)){
+            if(gp.player.invincible == false){
+                //damage
+                gp.player.life -=1;
+                gp.player.invincible = true;
+            }
+        }
         //if collision is false , player can move
       if(collisionOn==false){
 

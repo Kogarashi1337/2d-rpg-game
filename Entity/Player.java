@@ -1,4 +1,6 @@
 package Entity;
+import java.awt.AlphaComposite;
+import java.awt.Font;
 // import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -31,7 +33,6 @@ public class Player extends Entity {
     // public boolean epboots=false;
     
     public int radio=0;
-
 
 
  
@@ -114,20 +115,6 @@ public class Player extends Entity {
 
     public void update(){
 
-        //    while(keyH.pauseGame){
-        //         if(gp.gameState==gp.playState){
-        //             gp.gameState=gp.pauseState;
-        //             keyH.pauseGame=false;
-        //             break;
-        //         }
-        //         if(gp.gameState==gp.pauseState){
-        //             gp.gameState=gp.playState;
-        //             keyH.pauseGame=false;
-        //            break;
-        //         }
-
-        //     }
-
         if(keyH.radioPressedR){
             switch(radio){
                 case 0: radio = 1;
@@ -193,7 +180,7 @@ public class Player extends Entity {
                 
         //     }
         // }
-        if(keyH.upPressed==true || keyH.downPressed==true || keyH.leftPressed==true || keyH.rightPressed==true ){
+        if(keyH.upPressed==true || keyH.downPressed==true || keyH.leftPressed==true || keyH.rightPressed==true || keyH.enterPressed==true){
             
             if(keyH.upPressed==true){
                 direction="up";
@@ -226,13 +213,14 @@ public class Player extends Entity {
 
             //CHECK MONSTER COLLISION
             int monsterIndex = gp.cChecker.checkEntity(this,gp.monster);
+            contactMonster(monsterIndex);
 
             //CHECK EVENT
             gp.eHandler.checkEvent();
-            gp.keyH.enterPressed=false;
+            
 
             //if collision is false , player can move
-            if(collisionOn==false){
+            if(collisionOn==false && keyH.enterPressed==false){
                 switch(direction){
                     case"up":  worldY-=speed;break;
                     case"down": worldY+=speed;break;
@@ -240,6 +228,7 @@ public class Player extends Entity {
                     case"right":worldX+=speed;break;
                 }
             }
+            gp.keyH.enterPressed=false;
             numMoves++;
             if(numMoves>10){
                 
@@ -253,7 +242,15 @@ public class Player extends Entity {
             }
 
         }
-        
+
+        //OUTSIDE KEY STATEMENT
+        if(invincible==true){
+            invincibleCounter++;
+            if(invincibleCounter>60){
+                invincible=false;
+                invincibleCounter=0;
+            }
+        }
     }
 
 
@@ -378,17 +375,18 @@ public class Player extends Entity {
         }
         
     }
-    
-    //TIMER BETWEEN COLLISION INTERACTIONS
-    // public void setDialogueTimer(){
-    //     int i;
-    //     for(i=0;i<1200;i++){
-    //         System.out.println("Chat timer countdown: "+(1200-i));
-          
-          
-    //     }
 
-    // }
+    //INTERACTION WITH MONSTER
+    public void contactMonster(int i){
+        if(i !=999){
+            if(invincible==false){
+             life-=1; 
+             invincible=true;
+               
+            }
+            
+        }
+    }
 
     public void draw(Graphics2D g2){
         // g2.setColor(Color.red);
@@ -430,7 +428,27 @@ public class Player extends Entity {
           
 
 
+        if(invincible==true){
+            
+            if(this.damageBlink<1f){
+                
+                this.damageBlink=1f;
 
+            }else{
+                
+                this.damageBlink=0f;
+            }
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,this.damageBlink));
+            
+
+        }
         g2.drawImage(image,screenX, screenY,null);
+
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));
+
+        //DEBUG
+        // g2.setFont(new Font("Arial",Font.PLAIN,26));
+        // g2.setColor(null);
+        // g2.drawString("Invincible Counter ->"+invincibleCounter, 10, 400);
     }
 }
