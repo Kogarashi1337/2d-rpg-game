@@ -77,24 +77,24 @@ public class Player extends Entity {
         right2=setup("/TEXTURES/boy_right2");
 
         //Boots
-        down1b=setup("/TEXTURES/boy_bdown1");
-        down2b=setup("/TEXTURES/boy_bdown2");
-        left1b=setup("/TEXTURES/boy_bleft1");
-        left2b=setup("/TEXTURES/boy_bleft2");
-        right1b=setup("/TEXTURES/boy_bright1");
-        right2b=setup("/TEXTURES/boy_bright2");
-        up1b=setup("/TEXTURES/boy_bup1");
-        up2b=setup("/TEXTURES/boy_bup2");
+        // down1b=setup("/TEXTURES/boy_bdown1");
+        // down2b=setup("/TEXTURES/boy_bdown2");
+        // left1b=setup("/TEXTURES/boy_bleft1");
+        // left2b=setup("/TEXTURES/boy_bleft2");
+        // right1b=setup("/TEXTURES/boy_bright1");
+        // right2b=setup("/TEXTURES/boy_bright2");
+        // up1b=setup("/TEXTURES/boy_bup1");
+        // up2b=setup("/TEXTURES/boy_bup2");
 
         //switch 
-                    xd1=down1;
-                    xd2=down2;
-                    xl1=left1;
-                    xl2=left2;
-                    xr1=right1;
-                    xr2=right2;
-                    xu1=up1;
-                    xu2=up2;
+                    // xd1=down1;
+                    // xd2=down2;
+                    // xl1=left1;
+                    // xl2=left2;
+                    // xr1=right1;
+                    // xr2=right2;
+                    // xu1=up1;
+                    // xu2=up2;
     }
 
 

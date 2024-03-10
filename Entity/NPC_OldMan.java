@@ -48,7 +48,7 @@ public class NPC_OldMan extends Entity{
         int i=random.nextInt(100)+1;
         actionLockCounter++;
 
-        if(actionLockCounter == 120){
+        if(actionLockCounter == animTime){
 
             if(i <= 25){
             direction="left";

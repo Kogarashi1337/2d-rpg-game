@@ -45,22 +45,22 @@ public class MON_GreenSlime extends Entity {
     public void setAction(){
         int animTime=240;
         Random random=new Random();
-        int i=random.nextInt(animTime)+1;
+        int i=random.nextInt(100)+1;
         actionLockCounter++;
         
 
         if(actionLockCounter == animTime){
 
-            if(i <= animTime/4){
+            if(i <= 25){
             direction="left";
             }
-            if((i > animTime/4)&&(i<=animTime/2)){
+            if((i > 25)&&(i<=50)){
             direction="right";
             }
-            if((i > animTime/2)&&(i <= animTime*2/3)){
+            if((i > 50)&&(i <= 75)){
             direction="down";
             }
-            if(i > animTime*2/3){
+            if(i > 75){
             direction="up";
             }
             actionLockCounter=0; 

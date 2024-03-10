@@ -31,6 +31,7 @@ public class Entity {
     public int numMoves=0;
     public int numMoves8=0;//sprite Counter
     public int moveType=1;//sprite Number
+    public int animTime=120;//rate of change in direction
  
     public Rectangle solidArea=new Rectangle(0,0,48,48);
     public int solidAreaDefaultX,solidAreaDefaultY;
@@ -208,14 +209,14 @@ public class Entity {
                 if(this.entityDNA.equals("monster")){
                    if(collisionOn==false){
                      switch(moveType){
-                        case 1:image=up1;break;
+                        case 1:image=up1;this.speed=1;break;
                         case 2:image=up2;this.speed=2;break;
-                        case 3:image=up3;break;
-                        case 4:image=up4;this.speed=3;break;
-                        case 5:image=up5;break;
-                        case 6:image=up6;this.speed=1;break;
-                        case 7:image=up7;break;
-                        case 8:image=up8;break;
+                        case 3:image=up3;this.speed=3;break;
+                        case 4:image=up4;this.speed=2;break;
+                        case 5:image=up5;this.speed=3;break;
+                        case 6:image=up6;this.speed=2;break;
+                        case 7:image=up7;this.speed=1;break;
+                        case 8:image=up8;this.speed=0;break;
                     }
                    }
                     else if(collisionOn){
