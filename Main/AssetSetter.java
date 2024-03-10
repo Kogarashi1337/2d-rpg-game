@@ -106,5 +106,13 @@ public class AssetSetter {
         gp.monster[0]=new MON_GreenSlime(gp);
         gp.monster[0].worldX=gp.tileSize*17;
         gp.monster[0].worldY=gp.tileSize*18;
+
+        gp.monster[2]=new MON_GreenSlime(gp);
+        gp.monster[2].worldX=gp.tileSize*17;
+        gp.monster[2].worldY=gp.tileSize*16;
+        
+        gp.monster[3]=new MON_GreenSlime(gp);
+        gp.monster[3].worldX=gp.tileSize*17;
+        gp.monster[3].worldY=gp.tileSize*15;
     }
 }

@@ -209,11 +209,11 @@ public class Entity {
                    if(collisionOn==false){
                      switch(moveType){
                         case 1:image=up1;break;
-                        case 2:image=up2;break;
+                        case 2:image=up2;this.speed=2;break;
                         case 3:image=up3;break;
-                        case 4:image=up4;break;
+                        case 4:image=up4;this.speed=3;break;
                         case 5:image=up5;break;
-                        case 6:image=up6;break;
+                        case 6:image=up6;this.speed=1;break;
                         case 7:image=up7;break;
                         case 8:image=up8;break;
                     }
