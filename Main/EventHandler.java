@@ -37,8 +37,7 @@ public class EventHandler {
     }
     public void checkEvent(){
         //event happens
-        //if(hit(17,24,"any")==true){changeMap(gp.dialogueState);}
-        if(hit(25,23,"down")==true){healingPool(25,23,gp.dialogueState,gp.player.getLastHeal());}
+        //if(hit(25,23,"down")==true){healingPool(25,23,gp.dialogueState,gp.player.getLastHeal());}
         
         //check if the player is at least 1 tile away before interacting again
         int xDistance = Math.abs(gp.player.worldX - previousEventX);
@@ -50,7 +49,7 @@ public class EventHandler {
         }
         if(canTouchEvent == true){
             
-        if(hit(25,25,"down")==true){damagePit(25,25,gp.dialogueState);}
+       // if(hit(25,25,"down")==true){damagePit(25,25,gp.dialogueState);}
         }
 
     }
