@@ -1,8 +1,9 @@
 package Main;
 
 import Entity.NPC_OldMan;
+import Monsters.MON_GreenSlime;
 import object.OBJ_Door;
-import object.OBJ_Key;
+
 
 // import object.OBJ_GChest;
 // import object.OBJ_Boots;
@@ -91,34 +92,19 @@ public class AssetSetter {
 
         gp.obj[0] = new OBJ_Door(gp);
         gp.obj[0].worldX = gp.tileSize*29;
-        gp.obj[0].worldY = gp.tileSize*25;
-
-        gp.obj[2] = new OBJ_Key(gp);
-        gp.obj[2].worldX = gp.tileSize*29;
-        gp.obj[2].worldY = gp.tileSize*24;
-
-      
-        gp.obj[1] = new OBJ_Door(gp);
-        gp.obj[1].worldX = gp.tileSize*17;
-        gp.obj[1].worldY = gp.tileSize*24;  
-
- 
+        gp.obj[0].worldY = gp.tileSize*25; 
     
     }
     public void setNPC(){
         
-        gp.npc[0]=new NPC_OldMan(gp,"Geralt");
-        gp.npc[0].worldX=gp.tileSize*25;
-        gp.npc[0].worldY=gp.tileSize*23;
-        
-        gp.npc[1]=new NPC_OldMan(gp,"Saruman");
-        gp.npc[1].worldX=gp.tileSize*29;
-        gp.npc[1].worldY=gp.tileSize*20;
-        
-        gp.npc[2]=new NPC_OldMan(gp,"Gandalf");
-        gp.npc[2].worldX=gp.tileSize*17;
-        gp.npc[2].worldY=gp.tileSize*20;
+        gp.npc[0]=new NPC_OldMan(gp,"Gandalf");
+        gp.npc[0].worldX=gp.tileSize*17;
+        gp.npc[0].worldY=gp.tileSize*20;
         
     }
-
+    public void setMonster(){
+        gp.monster[0]=new MON_GreenSlime(gp);
+        gp.monster[0].worldX=gp.tileSize*17;
+        gp.monster[0].worldY=gp.tileSize*18;
+    }
 }

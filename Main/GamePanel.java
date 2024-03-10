@@ -62,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Entity[] obj =new Entity[17];
     //Wolf wolf=new Wolf(this,keyH);
     // Sheep sheep=new Sheep(this,keyH);
+    public Entity monster[]=new Entity[20];
     public Entity npc[]=new Entity[10];
     ArrayList<Entity> entityList = new ArrayList<>();
   //  public NPC_OldMan oldMan=new NPC_OldMan(this);
@@ -93,7 +94,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame(){
         aSetter.setObject();
         aSetter.setNPC();
-        
+        aSetter.setMonster();
         playMusic(8);
 
        // stopMusic();
@@ -181,16 +182,22 @@ public class GamePanel extends JPanel implements Runnable{
         if(gameState == playState){
             //UPDATE PLAYER
             player.update();
+
             //UPDATE NPC
-           for(int i=0;i<npc.length;i++){
-            if(npc[i]!=null){
-                npc[i].update();
+            for(int i=0;i<npc.length;i++){
+                if(npc[i]!=null){
+                    npc[i].update();
+                }
             }
-        }
 
-
-        // wolf.update();
-        // sheep.update();
+            //UPDATE MONSTER
+            for(int i=0;i<monster.length;i++){
+                if(monster[i]!=null){
+                    monster[i].update();
+                }
+            }
+            // wolf.update();
+            // sheep.update();
         }
         if(gameState == pauseState){
             //pause nothing happens
@@ -246,6 +253,13 @@ public class GamePanel extends JPanel implements Runnable{
                     entityList.add(obj[i]);
                 }
             }
+
+            for(int i = 0; i < monster.length; i++){
+                if(monster[i] != null){
+                    entityList.add(monster[i]);
+                }
+            }
+
             //SORT
             Collections.sort(entityList, new Comparator<Entity>(){
                 @Override
